@@ -4,7 +4,11 @@
 BT SHARE — Multi-Bluetooth Audio Hub (Hardware & Embedded Prototype)
 
 ## Project Goal
-Build and validate a hardware-first proof-of-concept that accepts one stereo AUX/line-level audio source and transmits the same audio program simultaneously to **two independent Bluetooth Classic A2DP sink devices**. A BM83-based audio engine handles Bluetooth audio, an ESP32 manages host control and authoritative device state, and a separately developed Flutter application later provides control/status over BLE GATT. **Audio must never pass through the Flutter phone.**
+The ultimate goal of BT SHARE is to develop a multi-device Bluetooth audio-sharing system that allows multiple receiving devices to play audio from one source simultaneously.
+
+The current college prototype is limited to two simultaneous Bluetooth receivers because of budget constraints.
+
+This prototype serves as an initial proof of concept for the broader multi-device vision. Supporting additional receivers will require further hardware and protocol research.
 
 ## Current Stage
 **Planning / pre-build engineering (last documented baseline; current execution progress unverified).**
@@ -53,17 +57,12 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 - **Engineering tools:** KiCad for schematic/PCB design; structured serial logs and documented hardware/protocol testing.
 
 ## Important Requirements
-- Exactly **two simultaneous Bluetooth Classic A2DP sink receivers** in the first prototype, receiving the same stereo AUX program.
-- **LKR 40,000** prototype procurement ceiling; budget changes require approval.
-- **Hardware-first proof:** core two-device audio must work independently before Flutter integration.
-- Strict paths: **Audio:** AUX → BM83 → two A2DP sinks. **Control:** Flutter → BLE GATT → ESP32 → UART → BM83.
-- ESP32 is the product-level source of truth for discovered/selected/paired/connected/streaming device state; Flutter must not expose raw BM83 commands.
-- Support discovery, pairing, connecting, disconnecting, reconnect policy, maximum-two limit, state/error reporting and structured diagnostics.
-- Use only verified BM83 documentation for pins, voltage, firmware capabilities and protocol syntax.
-- Do not claim zero latency or perfect synchronization; capture observed limitations.
-- Out of scope: 3–5 simultaneous receivers, Auracast/LE Audio, battery/enclosure productization, production RF certification, and routing audio through Flutter.
-- Every stage must pass an evidence-backed gate before proceeding; retain test logs, design reviews and artifacts.
-
+- Long-term vision: Support multiple simultaneous wireless audio receivers.
+- Current prototype: Support two simultaneous Bluetooth Classic A2DP receivers.
+- Reason for current limitation: College project budget constraints.
+- Future expansion: Research hardware and protocols capable of supporting more than two receivers.
+- The existing BM83-based design must not be assumed to support additional receivers without technical validation.
+  
 ## Next Recommended Tasks
 1. **Confirm the live status:** Ask workstream owners for current procurement delivery, KiCad schematic/PCB revisions, firmware commits and evidence of any passed gates. Update this file with verified facts.
 2. **Complete the pre-arrival engineering pack:** Official BM83 document register and capability verification, carrier interface spec, reviewed schematic/PCB and schematic-to-BOM mapping.
