@@ -9,7 +9,8 @@
 1. **Current college hardware prototype:** [`BT_SHARE_BRD.md`](BT_SHARE_BRD.md) and [`BT_SHARE_Execution_Plan.md`](BT_SHARE_Execution_Plan.md) remain the source documents for the BM83/ESP32 two-receiver prototype, LKR 40,000 procurement ceiling and hardware-first test gates. This file does not revise or supersede them.
 2. **Android mobile application:** [`docs/mobile-app/PRODUCT_SCOPE.md`](docs/mobile-app/PRODUCT_SCOPE.md) records product-level scope confirmed during feature planning on 2026-10-14. Detailed acceptance criteria, Android technical feasibility and BLE integration contracts require further review.
 3. **Feature list:** [`docs/mobile-app/FEATURE_CATALOGUE.md`](docs/mobile-app/FEATURE_CATALOGUE.md) records the proposed app functions and separate standalone sound-tool categories.
-4. **Decisions and limitations:** [`DECISIONS.md`](DECISIONS.md) logs the recent scope decisions. These are not proof of implementation or hardware capability.
+4. **Selected 25 feature concepts:** [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md) records all 25 explicitly selected feature ideas and the separate Smart Connection Recovery flow; selected means included in product planning, not technically validated.
+5. **Decisions and limitations:** [`DECISIONS.md`](DECISIONS.md) logs the recent scope decisions. These are not proof of implementation or hardware capability.
 
 ## Product-level requirements recorded
 
@@ -28,6 +29,15 @@
 | HUB-APP-01 | Support BT SHARE hub control/status over BLE as specified in the BRD's provisional APP-F01–APP-F12 catalogue. | Hardware-dependent app capability; contract remains provisional. |
 | HUB-LIMIT-01 | Respect the **two simultaneous A2DP receiver** limit of the current college prototype. | Existing hardware baseline, not a permanent product limit. |
 
+## Additional mobile requirements — expanded feature selection (2026-10-14)
+
+- **APP-X01–APP-X25:** All 25 feature concepts in [`FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md) are included in the **planned app scope**.
+- **APP-X26:** Smart Connection Recovery is separately recorded from the highlighted proposal, bringing the enumerated feature ideas to **25 plus one separately highlighted recovery feature**.
+- **APP-ROADMAP-01:** APP-X21–APP-X25 are **future-version candidates**, consistent with the originally supplied categorization; inclusion is not a commitment to first-release delivery.
+- **APP-COMPAT-01:** Actual Android APIs, permissions, native integration, battery impact, supported devices and receiver control limitations must be established before declaring specific features implementable.
+- **APP-PRIVACY-01:** Microphone access, local history, stored recordings, hearing-related processing and any export/firmware controls require appropriate permissions, safety boundaries, and user-visible privacy behavior.
+- **APP-GATT-01:** Any new hub-dependent actions require a reviewed, versioned ESP32/Flutter interface contract. No ESP32 commands or BM83 behaviors are assumed to exist yet.
+
 ## Boundaries that remain unchanged
 
 - **Current hardware audio path:** external stereo AUX/line-in → BM83 → two Bluetooth Classic A2DP sinks. The Flutter phone controls the hub; it does not relay this hardware-mode AUX audio.
@@ -38,7 +48,7 @@
 
 ## Requirements still to be frozen
 
-- Detailed actions, screens, inputs/outputs, acceptance tests and dependencies for each SOUND category and synchronization.
+- Testable detailed actions, screens, inputs/outputs and acceptance criteria for all SOUND categories, APP-X01–APP-X26 and synchronization.
 - Android API level/device support, permissions and native-platform feasibility for sound-system controls.
 - BM83 technical evidence and the jointly reviewed versioned BLE GATT contract for APP-F01–APP-F12.
 - Whether phone-to-phone synchronization or phone-speaker participation are in scope; these have **not** been confirmed as specific capabilities.

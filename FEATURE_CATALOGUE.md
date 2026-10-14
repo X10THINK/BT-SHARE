@@ -44,13 +44,19 @@ All seven are **intended to be usable by people who do not own the hardware**, s
 
 Do not equate the first prototype's two A2DP connections with proven synchronized output. No zero-latency claim is approved.
 
-## D. Explicitly unresolved decisions
+## D. Additional 25 selected features and highlighted recovery flow
 
-- Detailed sub-features, priority and acceptance criteria for each sound utility category.
+The software lead has now selected **all 25** entries `APP-X01`–`APP-X25` for the planned Android app product scope, including the five explicitly labelled **advanced/future-version** features. **Smart Connection Recovery** is separately tracked as `APP-X26` (highlighted outside the numbered 25).
+
+See **[`FEATURE_EXPANSION_25.md`](FEATURE_EXPANSION_25.md)** for the complete indexed list, user-facing behaviors, feature-to-category mapping, dependencies and validation cautions. These decisions supersede the earlier uncertainty about whether independent receiver volume, profile saving and visualizers should be in the *planned feature set*; they do **not** establish technical ability.
+
+## E. Explicitly unresolved decisions
+
+- Detailed acceptance criteria and first-release priority for all selected features; the 25-feature catalogue is product scope, not an approved delivery schedule.
 - Minimum supported Android OS version, device types and required permissions.
 - Extent of sound control across third-party apps under Android restrictions.
 - Supported combinations for synchronization, including whether multiple phones can participate.
 - The jointly agreed BLE service/characteristic UUIDs, commands, events, messages and error codes for the hub.
-- Individual device volume, music metadata controls and "play on phone" were illustrated/discussed but **not confirmed as separate build requirements**.
+- **Per-device volume is now selected as APP-X06, feasibility pending.** "Now Playing" metadata and playing hardware AUX audio on the phone have **not** been separately approved as additional requirements.
 
 **Implementation status:** Catalogue only; no working feature is asserted.

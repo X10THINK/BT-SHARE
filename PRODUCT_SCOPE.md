@@ -30,6 +30,14 @@ The project's wider audio-sharing vision is **multiple** receivers; two is a con
 
 **Scope interpretation:** Inclusion of a category is a product decision, **not** a claim that every listed competitor-app function is approved or technically possible. Individual behaviors still need precise product requirements and feasibility checks.
 
+## 2A. Confirmed 25-feature expansion (2026-10-14)
+
+The software-workstream lead requested that **all 25** additional feature concepts be included in BT SHARE's Android app product scope. They cover premium sound experiences (`APP-X01`–`APP-X04`), hub-oriented controls and monitoring (`APP-X05`–`APP-X09`), standalone utilities (`APP-X10`–`APP-X14`), product experience (`APP-X15`–`APP-X20`), and originally labelled advanced/future features (`APP-X21`–`APP-X25`). A highlighted **Smart Connection Recovery** requirement is tracked separately as `APP-X26`.
+
+The full feature list and precise wording are in [`FEATURE_EXPANSION_25.md`](FEATURE_EXPANSION_25.md). These are requirements-planning commitments, **not** claims of Android system access or available BM83/ESP32 firmware support. The pre-existing seven categories, including Audio Routing & Mixing, Per-App Volume Control and Hearing Assistance, remain included even where they are not exactly matched by a numbered new feature.
+
+**Phasing rule:** Features `APP-X21`–`APP-X25` remain identified as advanced/future, not first-version deliveries. No definitive release date, UI layout or final acceptance test has been approved.
+
 ## 3. Multi-device synchronization goal
 
 **SOUND-SYNC-01 — Maintain synchronized sound across devices** is in the planned product scope. The user experience goal is to minimize perceptible inter-device timing differences.
@@ -74,7 +82,7 @@ The screen navigation, onboarding steps, permission flow and specific tool contr
 
 ## 7. Current state
 
-**Requirements planning only.** No Flutter implementation, Android permission/device compatibility result, synchronized playback measurement or hardware app integration is claimed as complete in this scope document.
+**Requirements planning only, now including 25 selected feature concepts and separately highlighted Smart Connection Recovery.** No Flutter implementation, Android permission/device compatibility result, synchronized playback measurement or hardware app integration is claimed as complete in this scope document.
 
 ## 8. Existing engineering sources
 

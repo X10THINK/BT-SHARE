@@ -10,6 +10,10 @@
 | DEC-MOB-003 | 2026-10-14 | Include **all seven sound utility categories** listed in `REQUIREMENTS.md`. | Product-level category inclusion does not approve every example capability or bypass Android restrictions. | Scope confirmed; details pending |
 | DEC-MOB-004 | 2026-10-14 | Include **multi-device sound synchronization** as a product goal. | Achievable synchronization, device scenarios and architecture remain unverified. | Goal recorded; feasibility pending |
 | DEC-MOB-005 | 2026-10-14 | Preserve the college prototype's **two-receiver BM83/ESP32 hardware baseline**, hardware-first gate sequence and **LKR 40,000** ceiling. | Long-term multi-device vision is broader; no hardware redesign or increase to receiver count has been approved here. | Existing engineering baseline unchanged |
+| DEC-MOB-006 | 2026-10-14 | Include all **25** additional numbered app feature concepts, `APP-X01`–`APP-X25`, in the Android mobile app product scope. | Five items explicitly classified as advanced remain future-version candidates; platform/hardware compatibility is not proven. | Scope confirmed; delivery phases and acceptance pending |
+| DEC-MOB-007 | 2026-10-14 | Track **Smart Connection Recovery** separately as `APP-X26` because it is an unnumbered, highlighted addition to the 25. | ESP32 owns recovery decisions and authoritative link state; Flutter presents user information. | Scope recorded; hardware integration pending |
+
+Detailed selection: [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md).
 
 ## Change-control note
 
