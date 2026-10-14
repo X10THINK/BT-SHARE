@@ -1,16 +1,34 @@
 # BT SHARE — Engineering Second Brain
 
-**Central knowledge repository for the BT SHARE Multi-Bluetooth Audio Hub prototype**
+**Central knowledge repository for the BT SHARE multi-device audio-sharing project and its first college prototype**
 
-BT SHARE is a hardware-first proof-of-concept designed to take **one stereo AUX/line-level audio source** and transmit the same audio program to **two independent Bluetooth Classic A2DP sink devices simultaneously**. This repository serves as the project's **engineering second brain**: a version-controlled home for requirements, approved architecture, design references, decisions, firmware, PCB files, integration contracts, test evidence, and handover material.
+BT SHARE is a **college engineering project** whose long-term vision is to share audio from **one source with multiple wireless audio receiving devices simultaneously**. The project is **not fundamentally limited to two receivers**. Due to budget constraints, the **first hardware-first prototype** is deliberately scoped to deliver the same stereo AUX/line-level audio program to **two independent Bluetooth Classic A2DP sink devices**. This two-receiver target is an initial proof-of-concept milestone, **not the final project vision**.
+
+This repository serves as the project's **engineering second brain**: a version-controlled home for requirements, approved architecture, design references, decisions, firmware, PCB files, integration contracts, test evidence, and handover material.
 
 > **Project status:** Documentation and execution baseline established; hardware delivery was pending when the execution plan was written (06 October 2026). Update this status as work progresses. This README does **not** claim that dual-device audio has already been demonstrated.
 
+## Project vision and phased scope
+
+### Long-term project vision
+
+Develop an audio-sharing system that can connect **multiple wireless audio receiving devices** to a single audio source and play the same audio program simultaneously. **The ultimate number of receivers has not yet been fixed.** The intention to support multiple receivers is the overall project idea, not an optional reinterpretation of a two-device product.
+
+### Current college prototype (budget-limited)
+
+The first implementation is intentionally limited to **two simultaneous Bluetooth Classic A2DP sink devices** because of the college project's budget constraints. It uses a stereo AUX/line-level input, a BM83-based audio engine, ESP32 control firmware, and a separately developed Flutter control application. The documented prototype procurement ceiling remains **LKR 40,000**.
+
+**Important distinction:** A successful two-receiver demonstration validates the current prototype only. It does **not** demonstrate support for three or more receivers, nor establish that the same BM83 hardware can scale to the full vision. Larger receiver counts, alternative hardware, and Bluetooth architectures require separate feasibility studies, cost estimates, and design approvals.
+
 ## Project objective
 
-Prove that a single **BM83-based audio transmitter** can deliver audio from one AUX source to **two Bluetooth receivers at once**, with reliable discovery, pairing, connection, disconnection, state reporting, and recovery. Prove the two-receiver hardware path **before** integrating the separate Flutter mobile app.
+**Immediate engineering objective:** Prove that a single **BM83-based audio transmitter** can deliver audio from one AUX source to **two Bluetooth receivers at once**, with reliable discovery, pairing, connection, disconnection, state reporting, and recovery. Prove the two-receiver hardware path **before** integrating the separate Flutter mobile app.
 
-### System architecture
+**Broader project objective:** Use the college prototype as a foundation for future research into audio sharing across multiple receiving devices, without claiming an approved or tested solution for more than two at this stage.
+
+### Current prototype system architecture (two receivers)
+
+The diagram below represents **only the first prototype**, not a permanent limit on the overall BT SHARE concept.
 
 ```text
                    CONTROL PATH
@@ -42,11 +60,13 @@ Prove that a single **BM83-based audio transmitter** can deliver audio from one 
 
 The **phone does not carry or relay audio**. The **ESP32** owns product-level device and connection state, while the **BM83** handles Bluetooth audio. The Flutter app presents controls and status; BM83-specific host commands are hidden behind the ESP32 integration interface.
 
-## Prototype baseline
+## Current prototype baseline
 
 | Area | Agreed baseline |
 | --- | --- |
-| Project | BT SHARE — Multi-Bluetooth Audio Hub |
+| Project | BT SHARE — Multi-device audio-sharing vision; budget-limited two-receiver college prototype |
+| Long-term aim | Simultaneous audio sharing to multiple wireless receivers; receiver count and future architecture not yet finalized |
+| Reason for current two-receiver limit | College project budget constraints |
 | Primary milestone | One AUX source audible on two Bluetooth A2DP sink devices simultaneously |
 | Bluetooth audio engine | BM83SM1-00TA, selected AT firmware / A2DP Source / TX / SBC / Dual Link configuration |
 | Controller | ESP32 DevKit V1 |
@@ -59,7 +79,7 @@ The **phone does not carry or relay audio**. The **ESP32** owns product-level de
 
 **Important:** Exact BM83 pin assignments, power limits, AT commands, firmware behavior and Dual Link support must be checked against the **approved documentation for the exact module and firmware**. Planning documents are not a substitute for this verification.
 
-## In scope
+## In scope for the current prototype
 
 - BM83 carrier schematic, PCB layout, fabrication and bring-up documentation.
 - Safe module power, stereo line input, UART interface, control/recovery pins and test points.
@@ -70,14 +90,18 @@ The **phone does not carry or relay audio**. The **ESP32** owns product-level de
 
 ## Out of scope for the first prototype
 
-- Three to five simultaneous audio receivers.
-- Auracast, LE Audio or BLE Audio Broadcast.
+The exclusions below are **first-prototype scope boundaries**, not statements that BT SHARE will always be limited to two receivers.
+
+- Three or more simultaneous audio receivers **in the current build**. Supporting multiple receivers remains the long-term goal, but needs separate technical and budget assessment.
+- Auracast, LE Audio or BLE Audio Broadcast **in the current build**; no future protocol has been selected or approved.
 - Claims of perfectly synchronized receivers or zero latency.
 - Production enclosure, battery product, RF certification or production-ready hardware.
 - Sending audio through the Flutter phone.
 - Flutter UI implementation as part of the hardware/embedded team's deliverables.
 
-## Execution roadmap
+## Current prototype execution roadmap
+
+This roadmap delivers the **budget-limited two-receiver proof of concept**. It is not a completed roadmap to an unrestricted multi-receiver product.
 
 The approved planning approach uses **gates**. Do not move to the next layer before the preceding acceptance criteria are met.
 
@@ -102,7 +126,7 @@ The provisional app-facing feature baseline includes:
 
 1. Connect to the BT SHARE hub and view hub readiness.
 2. Scan and list discovered Bluetooth receivers.
-3. Assign receivers to Device 1 and Device 2 slots; reject a third active selection/link.
+3. For the **current prototype**, assign receivers to Device 1 and Device 2 slots; reject a third active selection/link. This software limit reflects the first build only, not the long-term vision.
 4. Pair, connect, disconnect and request reconnection.
 5. Display per-device pairing, connection, streaming and error states.
 6. Optionally expose diagnostics for development.
@@ -160,7 +184,8 @@ This repository may be used as project context by AI coding and research assista
 
 - Prefer the **latest approved BRD + Master Plan + Final Company Procurement Submission** when they conflict with older drafts.
 - Ask for missing specifications rather than inventing BM83 pins, electrical limits, commands or firmware capabilities.
-- Preserve the **two-receiver, hardware-first, LKR 40,000** prototype baseline unless a documented change is approved.
+- Preserve the **multi-device long-term vision** while keeping the **two-receiver, hardware-first, LKR 40,000** college-prototype baseline unchanged unless a documented change is approved.
+- Do **not** describe two receivers as the final product goal or assume the BM83 design supports three or more connections without verification.
 - Keep the UART/BM83 implementation separate from the Flutter-facing BLE contract.
 - Cite the exact source file, revision and requirement ID when proposing a design or code change.
 - Identify what is **verified**, **proposed**, **untested** or **blocked**.
@@ -176,7 +201,7 @@ The supplied documents also reference a **Final Company Procurement Submission**
 
 ## Definition of success
 
-The prototype succeeds when the evidence shows that:
+**For the current college prototype**, success means the evidence shows that:
 
 - The approved carrier and power interfaces are reviewed and safe for the selected hardware.
 - Stereo AUX input is transmitted to **two** compatible Bluetooth A2DP receivers at the same time.
@@ -186,6 +211,8 @@ The prototype succeeds when the evidence shows that:
 - Limitations, particularly device compatibility and audible latency differences, are honestly documented.
 - Procurement remains within the approved prototype ceiling unless a change is approved.
 
+**This is not the definition of success for the complete long-term vision.** A future multi-receiver implementation will need its own architecture, requirements, budget, milestones, and verification evidence.
+
 ---
 
-**BT SHARE** · Hardware-first prototyping · Evidence-driven engineering · One source, two receivers
+**BT SHARE** · Multi-device audio-sharing vision · Budget-limited two-receiver college prototype · Evidence-driven engineering
