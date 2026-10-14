@@ -13,7 +13,11 @@
 | DEC-MOB-006 | 2026-10-14 | Include all **25** additional numbered app feature concepts, `APP-X01`–`APP-X25`, in the Android mobile app product scope. | Five items explicitly classified as advanced remain future-version candidates; platform/hardware compatibility is not proven. | Scope confirmed; delivery phases and acceptance pending |
 | DEC-MOB-007 | 2026-10-14 | Track **Smart Connection Recovery** separately as `APP-X26` because it is an unnumbered, highlighted addition to the 25. | ESP32 owns recovery decisions and authoritative link state; Flutter presents user information. | Scope recorded; hardware integration pending |
 
-Detailed selection: [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md).
+| DEC-MOB-008 | 2026-10-14 | Include all **12 additional detailed audio-workspace proposals**, `APP-Y01`–`APP-Y12`, while **merging overlapping functionality** with existing features. | These refine the selected catalogue and introduce five distinct standalone capabilities; no duplicate counts or implementation claims. | Product scope confirmed; feasibility and acceptance pending |
+| DEC-MOB-009 | 2026-10-14 | Include **five additional advanced concepts**, `APP-Y13`–`APP-Y17`, in the future roadmap. | Explicitly future-oriented, not MVP release promises; requires further feasibility and prioritization. | Roadmap scope confirmed; delivery timing unspecified |
+| DEC-MOB-010 | 2026-10-14 | Record the proposed **five-area navigation** and **three development groupings** as UX and sequencing inputs. | Not approval of final UI screens, Figma navigation or release milestones. | Proposed; needs later UX/planning approval |
+
+Detailed selections: [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md) and [`docs/mobile-app/FEATURE_EXPANSION_17.md`](docs/mobile-app/FEATURE_EXPANSION_17.md).
 
 ## Change-control note
 

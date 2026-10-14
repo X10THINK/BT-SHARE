@@ -10,7 +10,8 @@
 2. **Android mobile application:** [`docs/mobile-app/PRODUCT_SCOPE.md`](docs/mobile-app/PRODUCT_SCOPE.md) records product-level scope confirmed during feature planning on 2026-10-14. Detailed acceptance criteria, Android technical feasibility and BLE integration contracts require further review.
 3. **Feature list:** [`docs/mobile-app/FEATURE_CATALOGUE.md`](docs/mobile-app/FEATURE_CATALOGUE.md) records the proposed app functions and separate standalone sound-tool categories.
 4. **Selected 25 feature concepts:** [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md) records all 25 explicitly selected feature ideas and the separate Smart Connection Recovery flow; selected means included in product planning, not technically validated.
-5. **Decisions and limitations:** [`DECISIONS.md`](DECISIONS.md) logs the recent scope decisions. These are not proof of implementation or hardware capability.
+5. **Audio workspace expansion (12 detailed proposals + 5 future concepts):** [`docs/mobile-app/FEATURE_EXPANSION_17.md`](docs/mobile-app/FEATURE_EXPANSION_17.md) maps new detail into existing requirements, records genuinely new tools and future candidates, and prevents double-counting.
+6. **Decisions and limitations:** [`DECISIONS.md`](DECISIONS.md) logs the recent scope decisions. These are not proof of implementation or hardware capability.
 
 ## Product-level requirements recorded
 
@@ -38,6 +39,15 @@
 - **APP-PRIVACY-01:** Microphone access, local history, stored recordings, hearing-related processing and any export/firmware controls require appropriate permissions, safety boundaries, and user-visible privacy behavior.
 - **APP-GATT-01:** Any new hub-dependent actions require a reviewed, versioned ESP32/Flutter interface contract. No ESP32 commands or BM83 behaviors are assumed to exist yet.
 
+## Audio workspace expansion selected for planning (2026-10-14)
+
+- **APP-Y01–APP-Y12:** All twelve detailed app proposals in [`FEATURE_EXPANSION_17.md`](docs/mobile-app/FEATURE_EXPANSION_17.md) are included for requirements planning. Seven refine already-selected features; the five distinct additional capabilities are **Rhythm & Drum Studio**, **Smart Practice Room**, **Local Audio Player**, **Custom Soundboard** and **Customizable Sound Dashboard**.
+- **APP-Y13–APP-Y17:** All five future concepts are included in the roadmap/backlog, **not** as first-release commitments: AI Sound Assistant, Audio Spectrum History, Multi-Listener Session Manager, Safe Listening Tools and Offline-First Experience.
+- **APP-NAV-01:** A five-destination concept (Connect / Sound Lab / Studio / Practice / My Sound) is recorded as a **UX proposal**, not an approved navigation design.
+- **APP-ROADMAP-02:** The source's foundation / musician / advanced-engineering groups are **suggested sequencing only**, subject to feature feasibility and team approval.
+- **APP-AUDIOPATH-01:** Audio generated/played by standalone utilities is app-owned phone audio; it is **not automatically injected** into the current hardware prototype's external AUX audio input.
+- **APP-DIAGNOSTICS-01:** Accurate receiver-latency measurement needs a validated signal/capture setup; BLE connection state alone cannot prove acoustic synchronization.
+
 ## Boundaries that remain unchanged
 
 - **Current hardware audio path:** external stereo AUX/line-in → BM83 → two Bluetooth Classic A2DP sinks. The Flutter phone controls the hub; it does not relay this hardware-mode AUX audio.
@@ -48,7 +58,7 @@
 
 ## Requirements still to be frozen
 
-- Testable detailed actions, screens, inputs/outputs and acceptance criteria for all SOUND categories, APP-X01–APP-X26 and synchronization.
+- Testable detailed actions, screens, inputs/outputs and acceptance criteria for all SOUND categories, APP-X01–APP-X26, APP-Y01–APP-Y17 and synchronization.
 - Android API level/device support, permissions and native-platform feasibility for sound-system controls.
 - BM83 technical evidence and the jointly reviewed versioned BLE GATT contract for APP-F01–APP-F12.
 - Whether phone-to-phone synchronization or phone-speaker participation are in scope; these have **not** been confirmed as specific capabilities.

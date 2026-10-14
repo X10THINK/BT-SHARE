@@ -36,3 +36,28 @@ No claim of system-wide Android capability, guaranteed low latency or medical-gr
 | APP-X25 | Existence of a safe firmware-update transport, authentication/integrity, fail-safe recovery and hardware approval |
 
 **No new feasibility test has been run by merely selecting these features.** Every item remains in planned scope until verified on an agreed Android target-device matrix and, where applicable, BM83/ESP32 hardware.
+
+
+## Audio workspace expansion — new feasibility questions (APP-Y01–APP-Y17)
+
+| IDs | Question / required evidence | Status |
+| --- | --- | --- |
+| APP-Y01 | Which visualizer inputs are app-owned or permitted? Could hardware-mode AUX spectrum data be obtained from a **new verified telemetry path**? No AUX samples are available merely by connecting over BLE. | Unverified |
+| APP-Y02 | Mic permission, pause/resume reliability, nondestructive trim/editing, A/B playback, export codec compatibility and local storage/consent policy. | Unverified |
+| APP-Y03 | Rhythm sequencer/metronome timing under audio focus, sample asset licensing, beat-loop timing and latency. | Unverified |
+| APP-Y04 | Identify permitted input sources, app-owned stream mixing, Android capture restrictions, metering and clipping behavior. | Unverified |
+| APP-Y05 | Offline practice session persistence, timer lifecycle behavior and personal activity data privacy. | Unverified |
+| APP-Y06 | Layered playback, license rights, sleep/fade/background audio behavior and power consumption. | Unverified |
+| APP-Y07 | Product-level BLE field inventory; signal/diagnostic telemetry availability; saved paired devices; distinguish in-app alias from hardware Bluetooth name. | Unverified |
+| APP-Y08 | Preset schema compatibility, allowed application EQ paths, saved device associations and **no presumed DSP influence on external AUX hardware audio**. | Unverified |
+| APP-Y09 | Acoustic sync measurement test rig, reference clocks, data capture, telemetry and uncertainty. Do not infer measured acoustic delay from BLE connection events. | Unverified |
+| APP-Y10 | Android user-granted audio file access, codecs, playlists, audio focus/routing; local phone audio is not automatically the external hardware AUX source. | Unverified |
+| APP-Y11 | Imported sound-file formats, concurrency/overlap, storage, looping response time and playback routing. | Unverified |
+| APP-Y12 | Customizable home layout, accessibility, compact views, device-size adaptation and persistence. | Unverified |
+| APP-Y13 | Rule-based vs optional AI assistant, knowledge boundaries, data processing consent, network needs and accuracy disclaimers. | Future validation |
+| APP-Y14 | Spectrum history retention, microphone calibration limitations, storage/export and comparability across phones. | Future validation |
+| APP-Y15 | Saved receiver-group persistence, currently supported maximum two active BM83 links, and future hardware/protocol gates for larger groups. | Future validation |
+| APP-Y16 | Listening reminders/duration estimation, unclear actual acoustic ear-level output, safety wording and no medical claims. | Future validation |
+| APP-Y17 | Offline-first local data strategy, permissions, optional backups, capacity limits and behavior without network/account. | Future validation |
+
+**Selection does not prove viability.** Prior APP-X dependencies still apply. This register is not evidence of a failed test or completed test.

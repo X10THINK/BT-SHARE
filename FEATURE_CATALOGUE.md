@@ -50,9 +50,21 @@ The software lead has now selected **all 25** entries `APP-X01`–`APP-X25` for 
 
 See **[`FEATURE_EXPANSION_25.md`](FEATURE_EXPANSION_25.md)** for the complete indexed list, user-facing behaviors, feature-to-category mapping, dependencies and validation cautions. These decisions supersede the earlier uncertainty about whether independent receiver volume, profile saving and visualizers should be in the *planned feature set*; they do **not** establish technical ability.
 
-## E. Explicitly unresolved decisions
+## E. Audio workspace expansion: 12 detailed proposals + 5 future concepts
 
-- Detailed acceptance criteria and first-release priority for all selected features; the 25-feature catalogue is product scope, not an approved delivery schedule.
+All twelve further proposals (`APP-Y01`–`APP-Y12`) and all five future concepts (`APP-Y13`–`APP-Y17`) are included in the **planned Android product scope**. This is a **merge into the existing catalogue**, not seventeen unique new implementations.
+
+- **Five distinct added tool families:** Rhythm & Drum Studio (`APP-Y03`), Smart Practice Room (`APP-Y05`), Local Audio Player (`APP-Y10`), Custom Soundboard (`APP-Y11`) and Customizable Sound Dashboard (`APP-Y12`).
+- **Seven detailed refinements:** Live Audio Visualizer Studio (`APP-Y01`), Voice Recorder & Audio Lab (`APP-Y02`), Mini Audio Mixer (`APP-Y04`), Ambient Sound Mixer (`APP-Y06`), BT SHARE Device Control Center (`APP-Y07`), Personal Audio Profiles (`APP-Y08`), Audio Sync & Diagnostics Lab (`APP-Y09`).
+- **Five future concepts:** AI Sound Assistant (`APP-Y13`), Audio Spectrum History (`APP-Y14`), Multi-Listener Session Manager (`APP-Y15`), Safe Listening Tools (`APP-Y16`), Offline-First Experience (`APP-Y17`).
+
+**Complete requirement details, existing-ID mappings and feasibility gates:** [`FEATURE_EXPANSION_17.md`](FEATURE_EXPANSION_17.md).
+
+**Proposed (not approved) information architecture:** Connect, Sound Lab, Studio, Practice, My Sound. No screens or component designs are finalized by this selection.
+
+## F. Explicitly unresolved decisions
+
+- Detailed acceptance criteria and first-release priority for all selected features; APP-X01–X26 plus APP-Y01–Y17 are product scope, not an approved delivery schedule.
 - Minimum supported Android OS version, device types and required permissions.
 - Extent of sound control across third-party apps under Android restrictions.
 - Supported combinations for synchronization, including whether multiple phones can participate.

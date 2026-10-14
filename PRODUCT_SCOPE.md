@@ -38,6 +38,16 @@ The full feature list and precise wording are in [`FEATURE_EXPANSION_25.md`](FEA
 
 **Phasing rule:** Features `APP-X21`–`APP-X25` remain identified as advanced/future, not first-version deliveries. No definitive release date, UI layout or final acceptance test has been approved.
 
+## 2B. Audio workspace expansion: 12 detailed proposals and 5 future concepts
+
+The Flutter lead subsequently selected all **12 detailed audio-workspace proposals** and **five additional future concepts** for requirements planning. These are mapped in [`FEATURE_EXPANSION_17.md`](FEATURE_EXPANSION_17.md), with explicit references to existing APP-X/SOUND/APP-F features so overlapping ideas are treated as **refinements**, not unrelated duplicate capabilities.
+
+**Distinct new tool families introduced:** Rhythm & Drum Studio; Smart Practice Room; Local Audio Player; Custom Soundboard; Customizable Sound Dashboard. Other proposals deepen existing visualizer, recorder, mixer, ambient, profiles, hardware control and synchronization/diagnostic plans.
+
+**Future scope added:** AI Sound Assistant; Audio Spectrum History; Multi-Listener Session Manager; Safe Listening Tools; Offline-First Experience. The first four introduce or deepen features, while offline-first is a cross-cutting quality direction. These are **future roadmap inclusions**, not first-release commitments.
+
+The source also outlines five candidate navigation destinations and foundation/musician/advanced sequencing. They are **recorded as proposals only**, without UI/UX sign-off or release schedule.
+
 ## 3. Multi-device synchronization goal
 
 **SOUND-SYNC-01 — Maintain synchronized sound across devices** is in the planned product scope. The user experience goal is to minimize perceptible inter-device timing differences.
@@ -82,7 +92,7 @@ The screen navigation, onboarding steps, permission flow and specific tool contr
 
 ## 7. Current state
 
-**Requirements planning only, now including 25 selected feature concepts and separately highlighted Smart Connection Recovery.** No Flutter implementation, Android permission/device compatibility result, synchronized playback measurement or hardware app integration is claimed as complete in this scope document.
+**Requirements planning only, now including 25 selected feature concepts, separately highlighted Smart Connection Recovery, twelve detailed audio-workspace proposals and five future roadmap concepts.** No Flutter implementation, Android permission/device compatibility result, synchronized playback measurement or hardware app integration is claimed as complete in this scope document.
 
 ## 8. Existing engineering sources
 

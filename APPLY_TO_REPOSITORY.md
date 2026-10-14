@@ -1,66 +1,67 @@
-# Apply BT SHARE's 25-feature Android App Scope Update
+# Apply BT SHARE's Consolidated Android App Scope Update
 
 **Prepared:** 2026-10-14  
 **Repository:** https://github.com/X10THINK/BT-SHARE  
-**GitHub permission observed:** `pull: true`, `push: false` — **no remote files were changed**.
+**Connected GitHub permissions checked:** `pull: true`, `push: false`. The remote repository **has not been changed** by this update.
 
 ## Purpose
 
-This package extends the prior Android-first BT SHARE sound app planning pack with **all 25 numbered features** selected by the Flutter workstream lead, plus the separately highlighted **Smart Connection Recovery** (`APP-X26`). It **does not** overwrite or weaken the original two-receiver BM83/ESP32 hardware proof-of-concept requirements.
+This is a **complete replacement for the previous uncommitted planning ZIPs**. It retains the **seven standalone sound utility categories**, **Android-first Flutter app**, the existing **provisional APP-F01–F12 hardware controls**, **multi-device synchronization goal**, the earlier **25 numbered feature proposals plus separately highlighted Smart Connection Recovery**, and now **12 detailed audio-workspace proposals plus 5 future concepts**. The new ideas are carefully mapped into the old ones instead of being counted as seventeen unrelated implementations.
 
-## Files to upload or replace (keep directory paths)
+**This package updates mobile-app scope only.** The college hardware BRD and execution plan remain controlling for the **two-receiver BM83/ESP32 proof of concept**, AUX audio path, LKR 40,000 ceiling and hardware-first engineering gates.
 
-- `REQUIREMENTS.md` — root requirements index, updated with APP-X01–X26.
-- `DECISIONS.md` — includes feature-selection decisions.
-- `docs/mobile-app/PRODUCT_SCOPE.md` — product boundary and expansion summary.
-- `docs/mobile-app/FEATURE_CATALOGUE.md` — existing APP-F01–F12 and seven SOUND categories, plus the new expansion link.
-- `docs/mobile-app/FEATURE_EXPANSION_25.md` — **new** comprehensive list of all 25, key dependencies, and recovery feature.
-- `docs/mobile-app/FEASIBILITY_REGISTER.md` — expanded risk and validation questions.
+## Files in this package
 
-If the previous Android scope pack was **not** uploaded yet, upload all six files here. If it was uploaded, replace the existing five and add the new `FEATURE_EXPANSION_25.md`.
+1. `REQUIREMENTS.md` — consolidated requirements index and change boundaries.
+2. `DECISIONS.md` — Android scope decision record through DEC-MOB-010.
+3. `docs/mobile-app/PRODUCT_SCOPE.md` — hardware-independent app product vision and hardware boundary.
+4. `docs/mobile-app/FEATURE_CATALOGUE.md` — provisional hardware functions, seven SOUND categories and expansion references.
+5. `docs/mobile-app/FEATURE_EXPANSION_25.md` — the earlier 25 features plus Smart Connection Recovery.
+6. `docs/mobile-app/FEATURE_EXPANSION_17.md` — all 12 detailed proposals and all five future concepts, with no-duplicate mapping.
+7. `docs/mobile-app/FEASIBILITY_REGISTER.md` — Android/hardware feasibility checks for both expansions.
+8. `APPLY_TO_REPOSITORY.md` — this file and README/PROJECT_STATUS insertion text below.
 
-## README.md addition
+Upload the seven requirements/decision files under their exact repository-relative paths. This pack includes the earlier files; **do not combine it with an old ZIP by uploading duplicate copies**.
 
-Add a short paragraph near the Android app scope section (or create that section if absent):
-
-```markdown
-### Android sound app — 25-feature expansion (2026-10-14)
-
-The Flutter software-workstream lead selected **all 25** additional sound-app feature concepts for the **planned Android app scope**, plus **Smart Connection Recovery** as a separately highlighted requirement. These cover premium sound tools, hub management, standalone utilities, usability/privacy and future-version features. The seven previously selected standalone sound-tool categories remain included. **Selected for product scope does not mean implemented or universally supported by Android or BM83 hardware.**
-
-See [feature expansion](docs/mobile-app/FEATURE_EXPANSION_25.md), [feature catalogue](docs/mobile-app/FEATURE_CATALOGUE.md), [requirements](REQUIREMENTS.md) and [decisions](DECISIONS.md). The college hardware prototype still targets two A2DP receivers with its existing budget and acceptance gates.
-```
-
-## PROJECT_STATUS.md addition
-
-Add under planning status without claiming code completion:
+## README.md insertion (add a new section near Flutter integration)
 
 ```markdown
-### Flutter Android app scope — 2026-10-14
+### Android app — expanded personal audio workspace (planning scope, 2026-10-14)
 
-- [x] Android-first Flutter app, hardware-independent utilities and the seven sound-tool categories selected.
-- [x] All 25 additional sound-app feature concepts APP-X01–APP-X25 selected for the product roadmap.
-- [x] Smart Connection Recovery tracked as separate highlighted feature APP-X26.
-- [ ] Final Android feasibility, supported target versions/devices and native-API access checked.
-- [ ] App/hardware BLE command and event contract approved by both teams.
-- [ ] Detailed feature acceptance tests and release prioritization approved.
-- [ ] Flutter implementation and real-device testing evidenced.
+BT SHARE is **Android-first in Flutter** and is intended to be useful **without the physical BT SHARE hardware** through standalone sound utilities. The Flutter lead included all seven sound-tool categories, a multi-device synchronization goal, **25 detailed product feature concepts** plus separately highlighted **Smart Connection Recovery**, and **12 additional detailed proposals plus five future concepts**. Overlapping ideas are consolidated rather than counted as independent extra features.
 
-**Note:** APP-X21–APP-X25 remain advanced/future-version candidates. The two-receiver hardware prototype baseline and status are unchanged.
+See [mobile product scope](docs/mobile-app/PRODUCT_SCOPE.md), [feature catalogue](docs/mobile-app/FEATURE_CATALOGUE.md), [25-feature register](docs/mobile-app/FEATURE_EXPANSION_25.md), [audio-workspace expansion](docs/mobile-app/FEATURE_EXPANSION_17.md), [feasibility](docs/mobile-app/FEASIBILITY_REGISTER.md), [requirements](REQUIREMENTS.md), and [decisions](DECISIONS.md).
+
+**Scope is not implementation.** Android third-party audio access, per-app volume, hardware-based visualizer, device-specific DSP/volume, more-than-two receivers and perfect synchronization have **not** been validated. The current college hardware proof remains two receivers, with hardware-first gates and the existing budget.
 ```
 
-## GitHub upload steps
+## PROJECT_STATUS.md insertion (under app planning; do not mark software complete)
 
-1. Sign into GitHub using an account with **write permission** to `X10THINK/BT-SHARE`.
-2. Upload the six files preserving their repository-relative paths (or copy them into a clone).
-3. Apply the two text additions to README.md and PROJECT_STATUS.md.
-4. Use a pull request for cross-team review if available; check the diff carefully before merging.
-5. Do not rewrite `BT_SHARE_BRD.md` and `BT_SHARE_Execution_Plan.md`, since they are the governing college hardware baseline.
+```markdown
+### Android Flutter mobile app — scope update (2026-10-14)
 
-**Suggested commit message:** `docs(android): record 25 feature concepts and recovery requirement`
+**Planning confirmed:** Android-first Flutter; standalone utilities for users without hardware; all seven SOUND categories; sync as a product goal; APP-X01–APP-X25 plus highlighted recovery APP-X26; APP-Y01–APP-Y12 (five distinct additional tool families, seven expansions) plus APP-Y13–APP-Y17 (five future concepts).
 
-## Scope confidence
+**Suggested but not finalized:** navigation (Connect / Sound Lab / Studio / Practice / My Sound) and proposed foundation / musician / advanced implementation grouping.
 
-- **Confirmed:** feature ideas included in mobile product requirements planning.
-- **Provisional:** exact functionality, screen flow, implementation order, OS / hardware support and acceptance tests.
-- **Not established:** deployed or tested code, hardware/receiver latency correction, system-wide third-party volume or EQ access, OTA update capability.
+**Not verified or completed:** Android feature feasibility, BM83/ESP32 support for new hardware features, BLE interface freeze, sound-synchronization tolerance, Flutter source/build/tests, accessibility, privacy and audio-permission tests. All planned features require detailed acceptance criteria and prioritization.
+
+The **two-receiver college hardware milestone, external AUX audio path and hardware-first acceptance gates remain unchanged**.
+```
+
+## GitHub application steps
+
+1. Use an account with write access to `X10THINK/BT-SHARE`.
+2. Upload the seven docs/requirements/decision files preserving directory structure, overwriting older uncommitted draft versions if needed.
+3. Apply README and PROJECT_STATUS snippets above without removing hardware baseline text.
+4. Review the diff in a pull request with the hardware/Flutter teams before merging.
+5. Confirm the links and do not claim acceptance gates or Android feature builds passed.
+
+Suggested commit message: `docs(android): consolidate audio workspace and future feature scope`
+
+## Scope status labels
+
+- **Scope confirmed:** product team has chosen the capabilities for planning.
+- **Proposed:** specific navigation, release sequencing and exact interaction design.
+- **Unverified:** OS permissions, supported audio routes, BM83 data/controls, audio latency/synchronization and test outcomes.
+- **Not completed:** code, UI builds, integration tests and hardware qualification.
