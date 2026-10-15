@@ -8,6 +8,50 @@ This repository serves as the project's **engineering second brain**: a version-
 
 > **Project status:** Documentation and execution baseline established; hardware delivery was pending when the execution plan was written (06 October 2026). Update this status as work progresses. This README does **not** claim that dual-device audio has already been demonstrated.
 
+## Android Mobile App — Expanded Product Scope
+
+BT SHARE is also being developed as an **Android-first personal audio workspace using Flutter and Dart**.
+
+The mobile application has two major parts:
+
+### 1. BT SHARE Hardware Control
+
+Connect to and manage the BT SHARE ESP32/BM83 audio hub through BLE GATT.
+
+The current college prototype targets two simultaneous Bluetooth audio receivers. The long-term goal is to support multiple receivers, subject to hardware feasibility and further development.
+
+### 2. Standalone Sound Utilities
+
+Users can access sound-related tools **without owning BT SHARE hardware**.
+
+The seven approved sound utility categories are:
+
+1. Equalizers & Sound Enhancers
+2. Audio Routing & Mixing
+3. Per-App Volume Control
+4. Sound Measuring & Analysis
+5. Tuners & Metronomes
+6. Ambient & Focus Sounds
+7. Hearing Assistance
+
+The product scope also includes 25 additional feature concepts, Smart Connection Recovery, 12 detailed audio-workspace proposals, and 5 future concepts.
+
+Cross-device sound synchronization is a product goal, but the exact supported devices and achievable accuracy are not yet verified.
+
+### Mobile App Requirements
+
+- [Product Scope](docs/mobile-app/PRODUCT_SCOPE.md)
+- [Feature Catalogue](docs/mobile-app/FEATURE_CATALOGUE.md)
+- [25-Feature Expansion](docs/mobile-app/FEATURE_EXPANSION_25.md)
+- [Additional 17 Proposals](docs/mobile-app/FEATURE_EXPANSION_17.md)
+- [Feasibility Register](docs/mobile-app/FEASIBILITY_REGISTER.md)
+- [Requirements](REQUIREMENTS.md)
+- [Decisions](DECISIONS.md)
+
+**Development Status:** Product scope recorded. Detailed feature acceptance criteria, Android feasibility, UI/UX design, implementation, and integration testing remain pending.
+
+**Hardware Boundary:** The current AUX-to-BM83 audio path is independent of Flutter. Standalone phone audio tools do not automatically process the external AUX audio flowing through the hardware.
+
 ## Project vision and phased scope
 
 ### Long-term project vision
@@ -194,8 +238,8 @@ This repository may be used as project context by AI coding and research assista
 
 Initial project materials provided for this repository:
 
-- `final brd.pdf` — **BT SHARE: Multi-Bluetooth Audio Hub, Business Requirements Document**, hardware & embedded two-device prototype baseline, dated **06 October 2026**.
-- `plan.pdf` — **BT SHARE: Hardware & Embedded Execution Planning**, working baseline dated **06 October 2026**.
+- [Hardware BRD](Basic%20Documents/PDF/BT_SHARE_BRD.pdf)
+- [Hardware Execution Plan](Basic%20Documents/PDF/BT_SHARE_Execution_Plan.pdf)
 
 The supplied documents also reference a **Final Company Procurement Submission** and original architecture material. Those references should be imported and checked separately before they are described as present in this repository.
 
