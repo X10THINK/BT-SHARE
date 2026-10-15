@@ -23,6 +23,41 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 - [x] Final procurement list recorded as ready/submitted **in the execution plan** (delivery and purchase fulfillment not verified).
 
 ## Work in Progress
+
+## Flutter Android Application — Product Scope Status
+
+**Last scope review:** 2026-10-15
+
+**Current Stage:** Requirements planning and feasibility review.
+
+### Completed Planning
+
+- [x] Android-first development with Flutter and Dart confirmed.
+- [x] Standalone sound utilities for users without BT SHARE hardware included.
+- [x] Seven sound utility categories selected.
+- [x] Original BT SHARE hardware-control feature catalogue documented.
+- [x] 25 additional sound application features selected.
+- [x] Smart Connection Recovery recorded.
+- [x] 12 additional audio-workspace proposals included.
+- [x] 5 future feature concepts included in the roadmap.
+- [x] Multi-device sound synchronization recorded as a product goal.
+
+### Pending Software Work
+
+- [ ] Select Android minimum SDK and supported devices.
+- [ ] Finalize first-release (MVP) requirements.
+- [ ] Validate Android audio APIs, permissions, and limitations.
+- [ ] Define Flutter application architecture.
+- [ ] Finalize app navigation and user journeys.
+- [ ] Design and approve the UI/UX.
+- [ ] Finalize the ESP32–Flutter BLE GATT contract.
+- [ ] Define acceptance criteria and testing plans.
+- [ ] Implement the Flutter application.
+- [ ] Complete Android device testing and hardware integration.
+
+**Important:** Planned features are not yet implemented or verified. The current college hardware prototype still targets two receivers, and no hardware acceptance gate is marked complete without test evidence.
+
+
 *Planned or instructed to start in the execution baseline; actual progress needs team confirmation:*
 - Pre-arrival hardware design: official BM83 document register, carrier interfaces, KiCad schematic, PCB layout and BOM reconciliation.
 - ESP32 firmware planning: UART driver/protocol, command shell, state model, logging and mock testing.
@@ -49,7 +84,7 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 - **Technical limitation:** Two active receivers are not a guarantee of synchronized playback; any latency differences and compatibility constraints must be observed and documented.
 
 ## Technology Stack
-- **Frontend:** Flutter mobile application (separate team; control and status only).
+- **Frontend:** Android-first Flutter/Dart application, including hardware control and standalone sound utilities (planned).
 - **Backend:** ESP32 embedded firmware: BM83 UART host control, device/state management and BLE GATT server. No cloud/server backend specified.
 - **Database:** None specified or required by the approved prototype baseline; optional on-device persistence is only a future firmware interface consideration.
 - **Deployment:** ESP32 firmware flashed to the development controller; BM83 configured with approved firmware; custom KiCad-designed BM83 carrier PCB; Flutter app integration after hardware gates. No hosted/cloud deployment specified.
@@ -70,8 +105,6 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 
 ## Source of Truth
 - See [`README.md`](README.md) for the project overview.
-- See [`REQUIREMENTS.md`](REQUIREMENTS.md) for approved requirements **when that file has been created and reviewed**.
-- See [`DECISIONS.md`](DECISIONS.md) for technical decisions **when that file has been created and reviewed**.
 - **Primary supplied sources:** *BT SHARE — Hardware & Embedded Prototype BRD* (2026-10-06) and *BT SHARE — Hardware & Embedded Execution Planning* (2026-10-06).
 - The execution plan also identifies the *Final Company Procurement Submission* as the purchasing authority; it was **not supplied for this update**.
 - Refer to actual source code, KiCad design revisions, approval records, receipts and tests to verify implementation status. A plan is not evidence of completion.
