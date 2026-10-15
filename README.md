@@ -6,7 +6,7 @@ BT SHARE is a **college engineering project** whose long-term vision is to share
 
 This repository serves as the project's **engineering second brain**: a version-controlled home for requirements, approved architecture, design references, decisions, firmware, PCB files, integration contracts, test evidence, and handover material.
 
-> **Project status:** Documentation and execution baseline established; hardware delivery was pending when the execution plan was written (06 October 2026). Update this status as work progresses. This README does **not** claim that dual-device audio has already been demonstrated.
+> **Project status:** Hardware execution status is not independently verified beyond the 06 October 2026 planning baseline; Android product feature scope is documented, not implemented. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for pending work. This README does **not** claim dual-device audio has already been demonstrated.
 
 ## Android Mobile App — Expanded Product Scope
 
@@ -102,7 +102,7 @@ The diagram below represents **only the first prototype**, not a permanent limit
 - **Audio:** Stereo AUX/line-level input → BM83 → Bluetooth Classic A2DP/SBC → two receivers.
 - **Control:** Flutter app → BLE GATT → ESP32 → UART → BM83.
 
-The **phone does not carry or relay audio**. The **ESP32** owns product-level device and connection state, while the **BM83** handles Bluetooth audio. The Flutter app presents controls and status; BM83-specific host commands are hidden behind the ESP32 integration interface.
+In the **current hardware prototype**, the phone does **not** carry or relay the external AUX audio stream. The **ESP32** owns product-level receiver/connection state, and the **BM83** handles Bluetooth audio. Flutter presents hub controls and status; BM83-specific host commands are hidden behind the ESP32 integration interface. **Separately**, Android standalone sound tools may play or process phone audio on supported Android audio routes.
 
 ## Current prototype baseline
 
@@ -116,7 +116,7 @@ The **phone does not carry or relay audio**. The **ESP32** owns product-level de
 | Controller | ESP32 DevKit V1 |
 | Hardware-to-controller | UART |
 | App-to-controller | BLE GATT |
-| Mobile application | Flutter, developed by a separate team |
+| Mobile application | Android-first Flutter/Dart: BLE hardware-control mode plus standalone sound utilities (separate software team) |
 | PCB approach | Team-designed minimal BM83 carrier board; no official BM83 evaluation board in the approved prototype scope |
 | Procurement ceiling | **LKR 40,000** |
 | Release approach | Hardware-first, with measurable acceptance gates |
@@ -140,7 +140,7 @@ The exclusions below are **first-prototype scope boundaries**, not statements th
 - Auracast, LE Audio or BLE Audio Broadcast **in the current build**; no future protocol has been selected or approved.
 - Claims of perfectly synchronized receivers or zero latency.
 - Production enclosure, battery product, RF certification or production-ready hardware.
-- Sending audio through the Flutter phone.
+- Relaying the **hardware prototype’s external AUX audio stream** through the Flutter phone. This does not exclude standalone Android audio playback tools.
 - Flutter UI implementation as part of the hardware/embedded team's deliverables.
 
 ## Current prototype execution roadmap
@@ -238,8 +238,8 @@ This repository may be used as project context by AI coding and research assista
 
 Initial project materials provided for this repository:
 
-- [Hardware BRD](Basic%20Documents/PDF/BT_SHARE_BRD.pdf)
-- [Hardware Execution Plan](Basic%20Documents/PDF/BT_SHARE_Execution_Plan.pdf)
+- [Hardware BRD (PDF)](Basic%20Documents/PDF/BT_SHARE_BRD.pdf) / [Markdown](Basic%20Documents/MD/BT_SHARE_BRD.md) — two-receiver hardware prototype baseline dated 06 October 2026.
+- [Hardware Execution Plan (PDF)](Basic%20Documents/PDF/BT_SHARE_Execution_Plan.pdf) / [Markdown](Basic%20Documents/MD/BT_SHARE_Execution_Plan.md) — working baseline dated 06 October 2026.
 
 The supplied documents also reference a **Final Company Procurement Submission** and original architecture material. Those references should be imported and checked separately before they are described as present in this repository.
 

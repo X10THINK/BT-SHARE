@@ -1,17 +1,18 @@
 # Project Status
 
 ## Project Name
-BT SHARE — Multi-Bluetooth Audio Hub (Hardware & Embedded Prototype)
+BT SHARE — Multi-Device Audio Sharing and Android Sound App (Two-Receiver College Hardware Prototype)
 
 ## Project Goal
 The ultimate goal of BT SHARE is to develop a multi-device Bluetooth audio-sharing system that allows multiple receiving devices to play audio from one source simultaneously.
 
 The current college prototype is limited to two simultaneous Bluetooth receivers because of budget constraints.
 
-This prototype serves as an initial proof of concept for the broader multi-device vision. Supporting additional receivers will require further hardware and protocol research.
+This prototype serves as an initial proof of concept for the broader multi-device vision. Supporting additional receivers will require further hardware and protocol research. The parallel **Android-first Flutter app** is also planned as a personal audio workspace with seven standalone sound-tool categories for users who do not own the hub.
 
 ## Current Stage
-**Planning / pre-build engineering (last documented baseline; current execution progress unverified).**
+**Hardware:** Planning / pre-build engineering (last documented baseline; current execution progress unverified).  
+**Flutter Android app:** Feature-scope planning recorded; detailed implementation and feasibility unverified.
 
 The execution plan dated **2026-10-06** records: BRD ready, final purchase list ready, procurement ready/submitted, hardware delivery pending, and pre-arrival engineering work to start immediately. No later completion evidence was provided with the source documents. This file does **not** assert that a design, firmware, hardware, or test gate has passed.
 
@@ -21,8 +22,6 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 - [x] Hardware & Embedded Execution Plan prepared (working baseline, 2026-10-06).
 - [x] Initial architecture, exactly-two-receiver prototype target, hardware/Flutter responsibility split, and LKR 40,000 procurement ceiling documented.
 - [x] Final procurement list recorded as ready/submitted **in the execution plan** (delivery and purchase fulfillment not verified).
-
-## Work in Progress
 
 ## Flutter Android Application — Product Scope Status
 
@@ -57,6 +56,7 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 
 **Important:** Planned features are not yet implemented or verified. The current college hardware prototype still targets two receivers, and no hardware acceptance gate is marked complete without test evidence.
 
+## Work in Progress
 
 *Planned or instructed to start in the execution baseline; actual progress needs team confirmation:*
 - Pre-arrival hardware design: official BM83 document register, carrier interfaces, KiCad schematic, PCB layout and BOM reconciliation.
@@ -73,20 +73,20 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 - [ ] Demonstrate the same AUX audio simultaneously on two independent sinks (G4; primary hardware milestone).
 - [ ] Implement and test ESP32 serial-controlled scan, pair, connect, disconnect, reconnect, state and error handling (G5).
 - [ ] Validate the product-level BLE GATT contract independently of Flutter (G6).
-- [ ] Integrate Flutter control/status after hardware proof (G7).
+- [ ] Integrate the Flutter BLE hub-control features after hardware proof and BLE contract freeze (G7). Standalone Android sound tools can be developed separately.
 - [ ] Complete compatibility, reconnect, range, long-run, latency-observation and demo acceptance evidence (G8).
 
 ## Known Issues and Blockers
 - **Hardware delivery:** Listed as pending on 2026-10-06; current delivery status unknown.
-- **Flutter function catalogue:** Final function catalogue had not been issued at the BRD baseline; integration contract remains provisional until agreed.
+- **Flutter BLE integration:** Product-level app feature scope has since been documented in `docs/mobile-app/`, but the **hardware-dependent command/event mapping and BLE contract remain provisional** until jointly approved.
 - **BM83 technical feasibility:** Exact selected firmware support, Dual Link behavior, commands and electrical details must be confirmed against approved manufacturer documentation and actual tests; do not assume these are already verified.
 - **No verified gate evidence supplied:** Current schematic, firmware build logs, procurement receipts and test results have not been provided for this status update.
 - **Technical limitation:** Two active receivers are not a guarantee of synchronized playback; any latency differences and compatibility constraints must be observed and documented.
 
 ## Technology Stack
 - **Frontend:** Android-first Flutter/Dart application, including hardware control and standalone sound utilities (planned).
-- **Backend:** ESP32 embedded firmware: BM83 UART host control, device/state management and BLE GATT server. No cloud/server backend specified.
-- **Database:** None specified or required by the approved prototype baseline; optional on-device persistence is only a future firmware interface consideration.
+- **Hardware-control service:** ESP32 embedded firmware: BM83 UART host control, device/state management and BLE GATT server. No cloud/server backend is specified or approved for the current prototype or Android planning scope.
+- **Storage:** The hardware prototype does not specify a cloud database. The Android app plans local-first settings, presets, recordings and history, but its actual on-device storage implementation has not been selected or verified.
 - **Deployment:** ESP32 firmware flashed to the development controller; BM83 configured with approved firmware; custom KiCad-designed BM83 carrier PCB; Flutter app integration after hardware gates. No hosted/cloud deployment specified.
 - **Hardware / interfaces:** BM83SM1-00TA, ESP32 DevKit V1, stereo 3.5 mm AUX/line-level input, UART, BLE GATT and Bluetooth Classic A2DP Source/SBC.
 - **Engineering tools:** KiCad for schematic/PCB design; structured serial logs and documented hardware/protocol testing.
@@ -105,11 +105,12 @@ The execution plan dated **2026-10-06** records: BRD ready, final purchase list 
 
 ## Source of Truth
 - See [`README.md`](README.md) for the project overview.
-- **Primary supplied sources:** *BT SHARE — Hardware & Embedded Prototype BRD* (2026-10-06) and *BT SHARE — Hardware & Embedded Execution Planning* (2026-10-06).
+- **Hardware baselines:** [Hardware BRD](Basic%20Documents/MD/BT_SHARE_BRD.md) and [Execution Plan](Basic%20Documents/MD/BT_SHARE_Execution_Plan.md), both dated 2026-10-06.
+- **Android app scope:** [Requirements](REQUIREMENTS.md), [Product Scope](docs/mobile-app/PRODUCT_SCOPE.md), [Feature Catalogue](docs/mobile-app/FEATURE_CATALOGUE.md), and [Decisions](DECISIONS.md).
 - The execution plan also identifies the *Final Company Procurement Submission* as the purchasing authority; it was **not supplied for this update**.
 - Refer to actual source code, KiCad design revisions, approval records, receipts and tests to verify implementation status. A plan is not evidence of completion.
 
 ## Last Updated
-2026-10-14
+2026-10-15 (documentation update only; live build/test status still requires evidence)
 
 > **Status confidence:** Document-based baseline only. Request an owner-verified update before using this file as a live execution dashboard.

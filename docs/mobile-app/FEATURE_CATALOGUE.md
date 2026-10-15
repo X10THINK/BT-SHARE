@@ -20,7 +20,7 @@
 | APP-F11 | View errors | Show structured pairing, connection, maximum-links, BM83 comms and timeout errors | Hardware-dependent core |
 | APP-F12 | Development log/status view | Developer-facing protocol and diagnostic information | Hardware-dependent **optional** |
 
-These IDs and descriptions come from `BT_SHARE_BRD.md` section 11.1. The BRD itself says the **final Flutter function catalogue and BLE contract are not yet frozen**. The phone does not scan/pair sinks through normal mobile audio Bluetooth APIs in this flow: **ESP32/BM83** does so and reports results to Flutter.
+These IDs and descriptions come from [the hardware BRD](../../Basic%20Documents/MD/BT_SHARE_BRD.md), section 11.1. The BRD itself says the **final Flutter function catalogue and BLE contract are not yet frozen**. The phone does not scan/pair sinks through normal mobile audio Bluetooth APIs in this flow: **ESP32/BM83** does so and reports results to Flutter.
 
 ## B. Standalone sound utilities: seven included categories
 

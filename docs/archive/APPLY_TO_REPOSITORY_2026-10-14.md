@@ -1,3 +1,11 @@
+# Archived Repository Upload Instructions (2026-10-14)
+
+> **Historical reference only.** These upload instructions were written before the project documents were committed and reorganized. They are **not** the current to-do list. For the latest project baseline use [README](../../README.md), [Requirements](../../REQUIREMENTS.md), [Decisions](../../DECISIONS.md), [Project Status](../../PROJECT_STATUS.md), and the [mobile app catalogue](../mobile-app/FEATURE_CATALOGUE.md).
+>
+> The older GitHub permission and upload status below refer to the environment when the instructions were drafted; they do not describe current source-control progress.
+
+---
+
 # Apply BT SHARE's Consolidated Android App Scope Update
 
 **Prepared:** 2026-10-14  
@@ -30,7 +38,7 @@ Upload the seven requirements/decision files under their exact repository-relati
 
 BT SHARE is **Android-first in Flutter** and is intended to be useful **without the physical BT SHARE hardware** through standalone sound utilities. The Flutter lead included all seven sound-tool categories, a multi-device synchronization goal, **25 detailed product feature concepts** plus separately highlighted **Smart Connection Recovery**, and **12 additional detailed proposals plus five future concepts**. Overlapping ideas are consolidated rather than counted as independent extra features.
 
-See [mobile product scope](docs/mobile-app/PRODUCT_SCOPE.md), [feature catalogue](docs/mobile-app/FEATURE_CATALOGUE.md), [25-feature register](docs/mobile-app/FEATURE_EXPANSION_25.md), [audio-workspace expansion](docs/mobile-app/FEATURE_EXPANSION_17.md), [feasibility](docs/mobile-app/FEASIBILITY_REGISTER.md), [requirements](REQUIREMENTS.md), and [decisions](DECISIONS.md).
+See [mobile product scope](../mobile-app/PRODUCT_SCOPE.md), [feature catalogue](../mobile-app/FEATURE_CATALOGUE.md), [25-feature register](../mobile-app/FEATURE_EXPANSION_25.md), [audio-workspace expansion](../mobile-app/FEATURE_EXPANSION_17.md), [feasibility](../mobile-app/FEASIBILITY_REGISTER.md), [requirements](../../REQUIREMENTS.md), and [decisions](../../DECISIONS.md).
 
 **Scope is not implementation.** Android third-party audio access, per-app volume, hardware-based visualizer, device-specific DSP/volume, more-than-two receivers and perfect synchronization have **not** been validated. The current college hardware proof remains two receivers, with hardware-first gates and the existing budget.
 ```

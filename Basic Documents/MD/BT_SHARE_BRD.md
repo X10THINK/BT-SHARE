@@ -1,5 +1,8 @@
 <!-- Converted from final brd(1).pdf; source page numbers retained. Diagrams saved in BT_SHARE_BRD_assets/. -->
 
+**Original planning PDF:** [View source](../PDF/BT_SHARE_BRD.pdf)  
+**Figures:** Restored directly from embedded diagrams in the matching source PDF.
+
 
 <!-- Source page 1 -->
 

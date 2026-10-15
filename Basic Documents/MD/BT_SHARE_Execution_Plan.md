@@ -1,5 +1,8 @@
 <!-- Converted from plan(1).pdf; source page numbers retained. Diagrams saved in BT_SHARE_Execution_Plan_assets/. -->
 
+**Original planning PDF:** [View source](../PDF/BT_SHARE_Execution_Plan.pdf)  
+**Figures:** Restored directly from embedded diagrams in the matching source PDF.
+
 
 <!-- Source page 1 -->
 
