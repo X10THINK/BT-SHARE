@@ -96,7 +96,7 @@ The screen navigation, onboarding steps, permission flow and specific tool contr
 
 ## 8. Existing engineering sources
 
-- [`../../BT_SHARE_BRD.md`](../../BT_SHARE_BRD.md) — hardware prototype requirements and provisional mobile app functions.
-- [`../../BT_SHARE_Execution_Plan.md`](../../BT_SHARE_Execution_Plan.md) — hardware-first gates and Flutter integration sequencing.
+- [BT SHARE Hardware BRD](../../Basic%20Documents/MD/BT_SHARE_BRD.md) — Hardware prototype requirements and provisional app functions.
+- [BT SHARE Execution Plan](../../Basic%20Documents/MD/BT_SHARE_Execution_Plan.md) — Hardware-first gates and Flutter integration.
 - [`../../PROJECT_STATUS.md`](../../PROJECT_STATUS.md) — overall engineering status (update separately when merging this scope).
 - [`../../DECISIONS.md`](../../DECISIONS.md) — app scope decision log.
