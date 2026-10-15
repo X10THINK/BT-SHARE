@@ -6,7 +6,7 @@
 
 ## Requirements sources and authority
 
-1. **Current college hardware prototype:** [`BT_SHARE_BRD.md`](BT_SHARE_BRD.md) and [`BT_SHARE_Execution_Plan.md`](BT_SHARE_Execution_Plan.md) remain the source documents for the BM83/ESP32 two-receiver prototype, LKR 40,000 procurement ceiling and hardware-first test gates. This file does not revise or supersede them.
+1. **Current college hardware prototype:** [`BT_SHARE_BRD.md`](Basic%20Documents/MD/BT_SHARE_BRD.md) and [`BT_SHARE_Execution_Plan.md`](Basic%20Documents/MD/BT_SHARE_Execution_Plan.md) remain the source documents for the BM83/ESP32 two-receiver prototype, LKR 40,000 procurement ceiling and hardware-first test gates. This file does not revise or supersede them.
 2. **Android mobile application:** [`docs/mobile-app/PRODUCT_SCOPE.md`](docs/mobile-app/PRODUCT_SCOPE.md) records product-level scope confirmed during feature planning on 2026-10-14. Detailed acceptance criteria, Android technical feasibility and BLE integration contracts require further review.
 3. **Feature list:** [`docs/mobile-app/FEATURE_CATALOGUE.md`](docs/mobile-app/FEATURE_CATALOGUE.md) records the proposed app functions and separate standalone sound-tool categories.
 4. **Selected 25 feature concepts:** [`docs/mobile-app/FEATURE_EXPANSION_25.md`](docs/mobile-app/FEATURE_EXPANSION_25.md) records all 25 explicitly selected feature ideas and the separate Smart Connection Recovery flow; selected means included in product planning, not technically validated.
