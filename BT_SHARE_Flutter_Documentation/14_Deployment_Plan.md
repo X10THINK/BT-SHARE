@@ -77,16 +77,16 @@ Select release owner, signing custody, distribution channel, domain/backend (sep
 
 ## Source references and document control
 
-- [overview](https://github.com/X10THINK/BT-SHARE/blob/main/README.md)
-- [status](https://github.com/X10THINK/BT-SHARE/blob/main/PROJECT_STATUS.md)
-- [requirements](https://github.com/X10THINK/BT-SHARE/blob/main/REQUIREMENTS.md)
-- [decisions](https://github.com/X10THINK/BT-SHARE/blob/main/DECISIONS.md)
-- [brd](https://github.com/X10THINK/BT-SHARE/blob/main/Basic%20Documents/MD/BT_SHARE_BRD.md)
-- [plan](https://github.com/X10THINK/BT-SHARE/blob/main/Basic%20Documents/MD/BT_SHARE_Execution_Plan.md)
-- [catalogue](https://github.com/X10THINK/BT-SHARE/blob/main/docs/mobile-app/FEATURE_CATALOGUE.md)
-- [x25](https://github.com/X10THINK/BT-SHARE/blob/main/docs/mobile-app/FEATURE_EXPANSION_25.md)
-- [y17](https://github.com/X10THINK/BT-SHARE/blob/main/docs/mobile-app/FEATURE_EXPANSION_17.md)
-- [feasibility](https://github.com/X10THINK/BT-SHARE/blob/main/docs/mobile-app/FEASIBILITY_REGISTER.md)
-- [product](https://github.com/X10THINK/BT-SHARE/blob/main/docs/mobile-app/PRODUCT_SCOPE.md)
+- [overview](../README.md)
+- [status](../PROJECT_STATUS.md)
+- [requirements](../REQUIREMENTS.md)
+- [decisions](../DECISIONS.md)
+- [brd](../First_Documents/MD/BT_SHARE_BRD.md)
+- [plan](../First_Documents/MD/BT_SHARE_Execution_Plan.md)
+- [catalogue](../FeaturE_Scope_Documentations/mobile-app/FEATURE_CATALOGUE.md)
+- [x25](../FeaturE_Scope_Documentations/mobile-app/FEATURE_EXPANSION_25.md)
+- [y17](../FeaturE_Scope_Documentations/mobile-app/FEATURE_EXPANSION_17.md)
+- [feasibility](../FeaturE_Scope_Documentations/mobile-app/FEASIBILITY_REGISTER.md)
+- [product](../FeaturE_Scope_Documentations/mobile-app/PRODUCT_SCOPE.md)
 
 **Change control:** Before implementation, confirm current source commit, product scope, prototype firmware capabilities, Android device matrix, ownership and acceptance criteria. Revisions must log approver, date and affected requirement IDs. The existing repository baseline remains authoritative for recorded historical decisions; this new pack does not silently supersede it.
