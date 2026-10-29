@@ -1,116 +1,77 @@
-# Project Status
+# BT SHARE — Project Status and Evidence Register
 
-## Project Name
-BT SHARE — Multi-Device Audio Sharing and Android Sound App (Two-Receiver College Hardware Prototype)
+**Reviewed:** 2026-10-29
+**Local clone baseline:** `main` at `bc5f287d57917f3c1b5945cbcfa61f9de8bbf1be` (*Upload all 14 Flutter documentation files*)
+**Scope:** The ZIP contains an updated local checkout; these edits are **not automatically pushed to GitHub**. Status is documentary, not confirmation of live devices, APKs or production releases.
 
-## Project Goal
-The ultimate goal of BT SHARE is to develop a multi-device Bluetooth audio-sharing system that allows multiple receiving devices to play audio from one source simultaneously.
+> **Status terminology:** **Documented** means a specification or plan is in the repository. **Verified** needs a build/test/bench/release artifact with traceable evidence. **Unknown** means implementation evidence was not included; it does not prove the team did no work outside the repository.
 
-The current college prototype is limited to two simultaneous Bluetooth receivers because of budget constraints.
+## Current workstreams
 
-This prototype serves as an initial proof of concept for the broader multi-device vision. Supporting additional receivers will require further hardware and protocol research. The parallel **Android-first Flutter app** is also planned as a personal audio workspace with seven standalone sound-tool categories for users who do not own the hub.
+| Workstream | Latest documented position | Evidence gap |
+| --- | --- | --- |
+| **Educational hardware prototype** | Historical October 6 BM83/ESP32 two-listener AUX prototype BRD and execution plan exist. The later owner-directed build is **fixed USB-5V only**, no battery/charger/UPS. | No native KiCad revision, reconciled live BOM, electrical sign-off, assembly or two-receiver playback test in this checkout. |
+| **Commercial product R&D** | Affordable multi-listener product vision: investigate AUX **or Bluetooth source** input and ordinary mixed-brand earbuds, starting with two. | Bluetooth receive→retransmit design, 3/4+ receiver capacity, sync, codecs and cost require official specs and physical proof. |
+| **Flutter Android app** | **14 Flutter technical/product documents** are regular tracked files under `BT_SHARE_Flutter_Documentation/`, in addition to prior mobile feature planning files. | No `pubspec.yaml`, `lib/`, compiled APK, tests or verified device integrations in this checkout. |
+| **Website, APK releases and admin** | Angular frontend, content/docs, secure downloadable APK releases and separate admin planned in 7 website specs. | No Angular source, backend, deployed website, production security tests or signed APK in this checkout. |
+| **Brand** | **X10 THINK** founded **ZAEROX** and **BT SHARE**. ZAEROX tagline: **Innovation Beyond Limits**. Six project-owner-provided logo assets included. | Legal brand registrations/certifications not independently assessed; logo assets are not evidence of released hardware. |
 
-## Current Stage
-**Hardware:** Planning / pre-build engineering (last documented baseline; current execution progress unverified).  
-**Flutter Android app:** Feature-scope planning recorded; detailed implementation and feasibility unverified.
+## Repository/documentation checkpoints
 
-The execution plan dated **2026-10-06** records: BRD ready, final purchase list ready, procurement ready/submitted, hardware delivery pending, and pre-arrival engineering work to start immediately. No later completion evidence was provided with the source documents. This file does **not** assert that a design, firmware, hardware, or test gate has passed.
+- [x] Root project requirements, decisions and scope/planning records available.
+- [x] Historical original hardware BRD and execution-plan PDF + Markdown retained under `First_Documents/`.
+- [x] Flutter feature-planning catalogues and feasibility register retained under `FeaturE_Scope_Documentations/mobile-app/`.
+- [x] **All 14 Flutter handover documents are present and tracked** by Git in the supplied clone at `bc5f287`. The **earlier gitlink issue was already corrected in that commit**.
+- [x] Website requirements, architecture, feature catalogue, sitemap, content, UI/UX and SEO docs retained.
+- [x] README, brand guide, supplied logos and updated cross-workstream documentation prepared in this local checkout.
+- [x] Stale internal document links corrected in this checkout; validate using `python scripts/repair_repository_links.py --check`.
+- [ ] Review, commit and push the prepared changes to GitHub. No push is claimed.
 
-## Completed Work
-*Documented planning deliverables only; completion does not imply physical implementation:*
-- [x] Hardware and Embedded Prototype BRD prepared (working baseline, 2026-10-06).
-- [x] Hardware & Embedded Execution Plan prepared (working baseline, 2026-10-06).
-- [x] Initial architecture, exactly-two-receiver prototype target, hardware/Flutter responsibility split, and LKR 40,000 procurement ceiling documented.
-- [x] Final procurement list recorded as ready/submitted **in the execution plan** (delivery and purchase fulfillment not verified).
+## Flutter architecture — exact documented decision state
 
-## Flutter Android Application — Product Scope Status
+The newer files **change the prior assessment**:
 
-**Last scope review:** 2026-10-15
+| Architecture topic | Actual document evidence | Decision status |
+| --- | --- | --- |
+| Android-first Flutter/Dart | [`03_TRD_Technical_Requirements.md`](BT_SHARE_Flutter_Documentation/03_TRD_Technical_Requirements.md), [`11_ADR_Architecture_Decision_Records.md`](BT_SHARE_Flutter_Documentation/11_ADR_Architecture_Decision_Records.md), ADR-001 | Product direction accepted; implementation not evidenced |
+| Feature-first Clean Architecture | Flutter TRD section 2; [`04_SDD_Software_Design.md`](BT_SHARE_Flutter_Documentation/04_SDD_Software_Design.md) sections 1–2; ADR-005 | **Proposed; formal team ADR sign-off pending** |
+| MVVM-style presentation | Flutter TRD and SDD; ADR-005 | **Proposed** |
+| Riverpod | Flutter TRD: **suggested**; SDD and ADR-005 describe a candidate | **Proposed / not approved** |
+| Domain-Driven Design (DDD) | No explicit binding DDD decision in the 14 Flutter files; domain entities/layers are described | **Additional recommendation only**, see [proposal](FeaturE_Scope_Documentations/mobile-app/ARCHITECTURE_PROPOSAL.md) |
 
-**Current Stage:** Requirements planning and feasibility review.
+Prior `PROJECT_STATUS.md` marked app architecture selection pending when the 14 handover files were absent from that assessment. These files now supply a **proposal**, not a signed final architecture choice.
 
-### Completed Planning
+## Prototype hardware gates (do not mark passed without evidence)
 
-- [x] Android-first development with Flutter and Dart confirmed.
-- [x] Standalone sound utilities for users without BT SHARE hardware included.
-- [x] Seven sound utility categories selected.
-- [x] Original BT SHARE hardware-control feature catalogue documented.
-- [x] 25 additional sound application features selected.
-- [x] Smart Connection Recovery recorded.
-- [x] 12 additional audio-workspace proposals included.
-- [x] 5 future feature concepts included in the roadmap.
-- [x] Multi-device sound synchronization recorded as a product goal.
+| Gate | Acceptance evidence | Checkout status |
+| --- | --- | --- |
+| G0 — Design ready | Reviewed native KiCad files, correct electrical/RF design, exact BM83 references, BOM/DRC/ERC | **Unknown / no native files here** |
+| G1 — Electrical ready | Inspection and safe power rails on assembled prototype | **No bench evidence** |
+| G2 — BM83 alive | Reproducible module configuration and UART logs | **No bench evidence** |
+| G3 — One-device audio | AUX source audible on a known compatible A2DP sink | **No audio test evidence** |
+| G4 — Two-device simultaneous audio | Same source audible on two independent sinks, recorded proof | **No dual-audio test evidence** |
+| G5 — ESP32 host control | Versioned firmware build and UART/device-state tests | **No source/test evidence** |
+| G6 — BLE GATT contract | Jointly approved protocol + independent tests | **No approved contract evidence** |
+| G7 — Flutter integration | End-to-end app/hub evidence | **No integration evidence** |
+| G8 — Validation/demo | Compatibility, recovery, latency observations, long run and demo report | **No validation evidence** |
 
-### Pending Software Work
+**Hardware scope controls:** The **LKR 40,000** figure in the original BRD is a **historical cap**, not proof of present funds or purchase authorization. Later changes in battery removal, procurement, power input and native PCB must be reconciled against actual updated hardware evidence before claiming completion or ordering anything. Do not assume two BM83 connections prove two active audio streams or synchronization.
 
-- [ ] Select Android minimum SDK and supported devices.
-- [ ] Finalize first-release (MVP) requirements.
-- [ ] Validate Android audio APIs, permissions, and limitations.
-- [ ] Define Flutter application architecture.
-- [ ] Finalize app navigation and user journeys.
-- [ ] Design and approve the UI/UX.
-- [ ] Finalize the ESP32–Flutter BLE GATT contract.
-- [ ] Define acceptance criteria and testing plans.
-- [ ] Implement the Flutter application.
-- [ ] Complete Android device testing and hardware integration.
+## Software and website requirements — what remains open
 
-**Important:** Planned features are not yet implemented or verified. The current college hardware prototype still targets two receivers, and no hardware acceptance gate is marked complete without test evidence.
+- [ ] Flutter team approves or revises its proposed feature-first Clean/MVVM/Riverpod design, explicitly deciding whether/how to adopt DDD principles.
+- [ ] Choose supported Android SDK levels, plugin versions, mobile storage, native audio integration and release MVP.
+- [ ] Freeze versioned ESP32 ↔ Flutter BLE characteristics, messages, errors, capabilities and test fixtures.
+- [ ] Implement and verify Flutter application source and supported Android audio/permission behaviors.
+- [ ] Select and build website backend/auth/release storage; implement Angular site and security/a11y testing.
+- [ ] Ship only signed, integrity-checked, approved APKs and verified product claims.
+- [ ] Import outside-repository hardware/procurement revisions **only after evidence review**, without repeating or overwriting completed engineering.
 
-## Work in Progress
+## Navigate source documents
 
-*Planned or instructed to start in the execution baseline; actual progress needs team confirmation:*
-- Pre-arrival hardware design: official BM83 document register, carrier interfaces, KiCad schematic, PCB layout and BOM reconciliation.
-- ESP32 firmware planning: UART driver/protocol, command shell, state model, logging and mock testing.
-- BLE GATT command/event contract definition with the parallel Flutter team.
-
-## Pending Work
-*Not verified as complete from the supplied documents:*
-- [ ] Approve exact BM83SM1-00TA documentation, firmware capabilities, pinout, voltage requirements and supported commands.
-- [ ] Review and release BM83 carrier schematic, PCB, antenna keep-out, ERC/DRC reports, Gerbers and assembly files.
-- [ ] Receive, inspect and assemble parts; complete safe power/electrical checks.
-- [ ] Verify BM83 UART control and documented transmitter/AUX configuration.
-- [ ] Demonstrate stable AUX audio on one Bluetooth A2DP sink (G3).
-- [ ] Demonstrate the same AUX audio simultaneously on two independent sinks (G4; primary hardware milestone).
-- [ ] Implement and test ESP32 serial-controlled scan, pair, connect, disconnect, reconnect, state and error handling (G5).
-- [ ] Validate the product-level BLE GATT contract independently of Flutter (G6).
-- [ ] Integrate the Flutter BLE hub-control features after hardware proof and BLE contract freeze (G7). Standalone Android sound tools can be developed separately.
-- [ ] Complete compatibility, reconnect, range, long-run, latency-observation and demo acceptance evidence (G8).
-
-## Known Issues and Blockers
-- **Hardware delivery:** Listed as pending on 2026-10-06; current delivery status unknown.
-- **Flutter BLE integration:** Product-level app feature scope has since been documented in `docs/mobile-app/`, but the **hardware-dependent command/event mapping and BLE contract remain provisional** until jointly approved.
-- **BM83 technical feasibility:** Exact selected firmware support, Dual Link behavior, commands and electrical details must be confirmed against approved manufacturer documentation and actual tests; do not assume these are already verified.
-- **No verified gate evidence supplied:** Current schematic, firmware build logs, procurement receipts and test results have not been provided for this status update.
-- **Technical limitation:** Two active receivers are not a guarantee of synchronized playback; any latency differences and compatibility constraints must be observed and documented.
-
-## Technology Stack
-- **Frontend:** Android-first Flutter/Dart application, including hardware control and standalone sound utilities (planned).
-- **Hardware-control service:** ESP32 embedded firmware: BM83 UART host control, device/state management and BLE GATT server. No cloud/server backend is specified or approved for the current prototype or Android planning scope.
-- **Storage:** The hardware prototype does not specify a cloud database. The Android app plans local-first settings, presets, recordings and history, but its actual on-device storage implementation has not been selected or verified.
-- **Deployment:** ESP32 firmware flashed to the development controller; BM83 configured with approved firmware; custom KiCad-designed BM83 carrier PCB; Flutter app integration after hardware gates. No hosted/cloud deployment specified.
-- **Hardware / interfaces:** BM83SM1-00TA, ESP32 DevKit V1, stereo 3.5 mm AUX/line-level input, UART, BLE GATT and Bluetooth Classic A2DP Source/SBC.
-- **Engineering tools:** KiCad for schematic/PCB design; structured serial logs and documented hardware/protocol testing.
-
-## Important Requirements
-- Long-term vision: Support multiple simultaneous wireless audio receivers.
-- Current prototype: Support two simultaneous Bluetooth Classic A2DP receivers.
-- Reason for current limitation: College project budget constraints.
-- Future expansion: Research hardware and protocols capable of supporting more than two receivers.
-- The existing BM83-based design must not be assumed to support additional receivers without technical validation.
-  
-## Next Recommended Tasks
-1. **Confirm the live status:** Ask workstream owners for current procurement delivery, KiCad schematic/PCB revisions, firmware commits and evidence of any passed gates. Update this file with verified facts.
-2. **Complete the pre-arrival engineering pack:** Official BM83 document register and capability verification, carrier interface spec, reviewed schematic/PCB and schematic-to-BOM mapping.
-3. **Prepare independent bring-up:** Compile/test the ESP32 mock firmware components, document the BM83 command/event matrix, and draft BLE interface + acceptance test sheets. Once parts arrive, progress strictly from electrical checks to BM83, one-device audio and two-device proof.
-
-## Source of Truth
-- See [`README.md`](README.md) for the project overview.
-- **Hardware baselines:** [Hardware BRD](Basic%20Documents/MD/BT_SHARE_BRD.md) and [Execution Plan](Basic%20Documents/MD/BT_SHARE_Execution_Plan.md), both dated 2026-10-06.
-- **Android app scope:** [Requirements](REQUIREMENTS.md), [Product Scope](docs/mobile-app/PRODUCT_SCOPE.md), [Feature Catalogue](docs/mobile-app/FEATURE_CATALOGUE.md), and [Decisions](DECISIONS.md).
-- The execution plan also identifies the *Final Company Procurement Submission* as the purchasing authority; it was **not supplied for this update**.
-- Refer to actual source code, KiCad design revisions, approval records, receipts and tests to verify implementation status. A plan is not evidence of completion.
-
-## Last Updated
-2026-10-15 (documentation update only; live build/test status still requires evidence)
-
-> **Status confidence:** Document-based baseline only. Request an owner-verified update before using this file as a live execution dashboard.
+- [README](README.md) · [Requirements](REQUIREMENTS.md) · [Decisions](DECISIONS.md) · [Project workflow](PROJECT_WORKFLOW.md)
+- [Flutter TRD](BT_SHARE_Flutter_Documentation/03_TRD_Technical_Requirements.md) · [Flutter SDD](BT_SHARE_Flutter_Documentation/04_SDD_Software_Design.md) · [Flutter ADRs](BT_SHARE_Flutter_Documentation/11_ADR_Architecture_Decision_Records.md)
+- [Mobile scope](FeaturE_Scope_Documentations/mobile-app/PRODUCT_SCOPE.md) · [Architecture extension proposal](FeaturE_Scope_Documentations/mobile-app/ARCHITECTURE_PROPOSAL.md)
+- [Website requirements](BT_SHARE_Website_Documentation/WEBSITE_REQUIREMENTS.md) · [Website architecture](BT_SHARE_Website_Documentation/WEBSITE_ARCHITECTURE.md)
+- [Original hardware BRD](First_Documents/MD/BT_SHARE_BRD.md) · [Execution plan](First_Documents/MD/BT_SHARE_Execution_Plan.md)
+- [Brand identity](BRAND_IDENTITY.md)

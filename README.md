@@ -1,262 +1,138 @@
-# BT SHARE — Engineering Second Brain
+<div align="center">
 
-**Central knowledge repository for the BT SHARE multi-device audio-sharing project and its first college prototype**
+<img src="assets/branding/bt-share-logo-blue.png" alt="BT SHARE — Bluetooth audio sharing" width="330" />
 
-BT SHARE is a **college engineering project** whose long-term vision is to share audio from **one source with multiple wireless audio receiving devices simultaneously**. The project is **not fundamentally limited to two receivers**. Due to budget constraints, the **first hardware-first prototype** is deliberately scoped to deliver the same stereo AUX/line-level audio program to **two independent Bluetooth Classic A2DP sink devices**. This two-receiver target is an initial proof-of-concept milestone, **not the final project vision**.
+# BT SHARE
 
-This repository serves as the project's **engineering second brain**: a version-controlled home for requirements, approved architecture, design references, decisions, firmware, PCB files, integration contracts, test evidence, and handover material.
+### Making shared wireless listening more accessible.
 
-> **Project status:** Hardware execution status is not independently verified beyond the 06 October 2026 planning baseline; Android product feature scope is documented, not implemented. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for pending work. This README does **not** claim dual-device audio has already been demonstrated.
+**Bluetooth audio sharing · Embedded hardware · Flutter companion app · Audio utilities**
 
-## Android Mobile App — Expanded Product Scope
+**A ZAEROX product · Founded by X10 THINK**
 
-BT SHARE is also being developed as an **Android-first personal audio workspace using Flutter and Dart**.
+[Project status](PROJECT_STATUS.md) · [Requirements](REQUIREMENTS.md) · [Decisions](DECISIONS.md) · [Development workflow](PROJECT_WORKFLOW.md) · [Website specifications](BT_SHARE_Website_Documentation/WEBSITE_REQUIREMENTS.md)
 
-The mobile application has two major parts:
-
-### 1. BT SHARE Hardware Control
-
-Connect to and manage the BT SHARE ESP32/BM83 audio hub through BLE GATT.
-
-The current college prototype targets two simultaneous Bluetooth audio receivers. The long-term goal is to support multiple receivers, subject to hardware feasibility and further development.
-
-### 2. Standalone Sound Utilities
-
-Users can access sound-related tools **without owning BT SHARE hardware**.
-
-The seven approved sound utility categories are:
-
-1. Equalizers & Sound Enhancers
-2. Audio Routing & Mixing
-3. Per-App Volume Control
-4. Sound Measuring & Analysis
-5. Tuners & Metronomes
-6. Ambient & Focus Sounds
-7. Hearing Assistance
-
-The product scope also includes 25 additional feature concepts, Smart Connection Recovery, 12 detailed audio-workspace proposals, and 5 future concepts.
-
-Cross-device sound synchronization is a product goal, but the exact supported devices and achievable accuracy are not yet verified.
-
-### Mobile App Requirements
-
-- [Product Scope](docs/mobile-app/PRODUCT_SCOPE.md)
-- [Feature Catalogue](docs/mobile-app/FEATURE_CATALOGUE.md)
-- [25-Feature Expansion](docs/mobile-app/FEATURE_EXPANSION_25.md)
-- [Additional 17 Proposals](docs/mobile-app/FEATURE_EXPANSION_17.md)
-- [Feasibility Register](docs/mobile-app/FEASIBILITY_REGISTER.md)
-- [Requirements](REQUIREMENTS.md)
-- [Decisions](DECISIONS.md)
-
-**Development Status:** Product scope recorded. Detailed feature acceptance criteria, Android feasibility, UI/UX design, implementation, and integration testing remain pending.
-
-**Hardware Boundary:** The current AUX-to-BM83 audio path is independent of Flutter. Standalone phone audio tools do not automatically process the external AUX audio flowing through the hardware.
-
-## Project vision and phased scope
-
-### Long-term project vision
-
-Develop an audio-sharing system that can connect **multiple wireless audio receiving devices** to a single audio source and play the same audio program simultaneously. **The ultimate number of receivers has not yet been fixed.** The intention to support multiple receivers is the overall project idea, not an optional reinterpretation of a two-device product.
-
-### Current college prototype (budget-limited)
-
-The first implementation is intentionally limited to **two simultaneous Bluetooth Classic A2DP sink devices** because of the college project's budget constraints. It uses a stereo AUX/line-level input, a BM83-based audio engine, ESP32 control firmware, and a separately developed Flutter control application. The documented prototype procurement ceiling remains **LKR 40,000**.
-
-**Important distinction:** A successful two-receiver demonstration validates the current prototype only. It does **not** demonstrate support for three or more receivers, nor establish that the same BM83 hardware can scale to the full vision. Larger receiver counts, alternative hardware, and Bluetooth architectures require separate feasibility studies, cost estimates, and design approvals.
-
-## Project objective
-
-**Immediate engineering objective:** Prove that a single **BM83-based audio transmitter** can deliver audio from one AUX source to **two Bluetooth receivers at once**, with reliable discovery, pairing, connection, disconnection, state reporting, and recovery. Prove the two-receiver hardware path **before** integrating the separate Flutter mobile app.
-
-**Broader project objective:** Use the college prototype as a foundation for future research into audio sharing across multiple receiving devices, without claiming an approved or tested solution for more than two at this stage.
-
-### Current prototype system architecture (two receivers)
-
-The diagram below represents **only the first prototype**, not a permanent limit on the overall BT SHARE concept.
-
-```text
-                   CONTROL PATH
-              Flutter Mobile App
-                      |
-                   BLE GATT
-                      |
-               ESP32 DevKit V1
-            (control + device state)
-                      |
-                UART host link
-                      |
-                BM83SM1-00TA
-               (A2DP Source/TX)
-                /           \
-               /             \
-     Bluetooth Receiver 1   Bluetooth Receiver 2
-        (A2DP Sink)           (A2DP Sink)
-                      ^
-                      |
-             Stereo AUX / Line-In
-                  AUDIO PATH
-```
-
-**Two independent paths:**
-
-- **Audio:** Stereo AUX/line-level input → BM83 → Bluetooth Classic A2DP/SBC → two receivers.
-- **Control:** Flutter app → BLE GATT → ESP32 → UART → BM83.
-
-In the **current hardware prototype**, the phone does **not** carry or relay the external AUX audio stream. The **ESP32** owns product-level receiver/connection state, and the **BM83** handles Bluetooth audio. Flutter presents hub controls and status; BM83-specific host commands are hidden behind the ESP32 integration interface. **Separately**, Android standalone sound tools may play or process phone audio on supported Android audio routes.
-
-## Current prototype baseline
-
-| Area | Agreed baseline |
-| --- | --- |
-| Project | BT SHARE — Multi-device audio-sharing vision; budget-limited two-receiver college prototype |
-| Long-term aim | Simultaneous audio sharing to multiple wireless receivers; receiver count and future architecture not yet finalized |
-| Reason for current two-receiver limit | College project budget constraints |
-| Primary milestone | One AUX source audible on two Bluetooth A2DP sink devices simultaneously |
-| Bluetooth audio engine | BM83SM1-00TA, selected AT firmware / A2DP Source / TX / SBC / Dual Link configuration |
-| Controller | ESP32 DevKit V1 |
-| Hardware-to-controller | UART |
-| App-to-controller | BLE GATT |
-| Mobile application | Android-first Flutter/Dart: BLE hardware-control mode plus standalone sound utilities (separate software team) |
-| PCB approach | Team-designed minimal BM83 carrier board; no official BM83 evaluation board in the approved prototype scope |
-| Procurement ceiling | **LKR 40,000** |
-| Release approach | Hardware-first, with measurable acceptance gates |
-
-**Important:** Exact BM83 pin assignments, power limits, AT commands, firmware behavior and Dual Link support must be checked against the **approved documentation for the exact module and firmware**. Planning documents are not a substitute for this verification.
-
-## In scope for the current prototype
-
-- BM83 carrier schematic, PCB layout, fabrication and bring-up documentation.
-- Safe module power, stereo line input, UART interface, control/recovery pins and test points.
-- One-receiver audio proof, followed by the two-receiver Dual Link proof.
-- ESP32 firmware for BM83 host communications, command parsing, device management, logging, retry/recovery and BLE GATT.
-- A versioned, product-level BLE contract for the Flutter team: commands, events, device IDs, states and errors.
-- Tests for compatibility, reconnection, range, long-running operation, latency observations and demonstration readiness.
-
-## Out of scope for the first prototype
-
-The exclusions below are **first-prototype scope boundaries**, not statements that BT SHARE will always be limited to two receivers.
-
-- Three or more simultaneous audio receivers **in the current build**. Supporting multiple receivers remains the long-term goal, but needs separate technical and budget assessment.
-- Auracast, LE Audio or BLE Audio Broadcast **in the current build**; no future protocol has been selected or approved.
-- Claims of perfectly synchronized receivers or zero latency.
-- Production enclosure, battery product, RF certification or production-ready hardware.
-- Relaying the **hardware prototype’s external AUX audio stream** through the Flutter phone. This does not exclude standalone Android audio playback tools.
-- Flutter UI implementation as part of the hardware/embedded team's deliverables.
-
-## Current prototype execution roadmap
-
-This roadmap delivers the **budget-limited two-receiver proof of concept**. It is not a completed roadmap to an unrestricted multi-receiver product.
-
-The approved planning approach uses **gates**. Do not move to the next layer before the preceding acceptance criteria are met.
-
-| Phase | Work | Exit gate |
-| --- | --- | --- |
-| P0 — Define | Freeze requirements, interfaces, references and constraints | G0: Design/baseline ready |
-| P1 — Design | Carrier schematic, BOM reconciliation, PCB, RF review and manufacturing outputs | G0/G1: Reviewed design and checks |
-| P2 — Build | Receive, inspect, assemble and electrically pre-check carrier | G1: Electrical ready |
-| P3 — BM83 Bring-up | Verify UART response and selected firmware/host/TX/AUX configuration | G2: BM83 alive |
-| P4 — One Device | Prove stable audio to one known-good receiver | G3: One-device audio |
-| P5 — Two Devices | Prove same AUX program on both receivers | **G4: Two-device core proof** |
-| P6 — ESP32 Host | Implement UART driver, parser, state and device-control flows | G5: ESP32 host control |
-| P7 — BLE GATT | Test app-facing commands, notifications, states and errors | G6: BLE contract stable |
-| P8 — Flutter | Integrate the separately developed app against the agreed contract | G7: Flutter integration |
-| P9 — Validate | Run compatibility, reconnect, range, long-run, latency-observation and demo tests | G8: Validation/demo ready |
-
-**Primary hardware success gate (G4):** Both receivers play the same input source simultaneously **without relying on Flutter**. Passing this gate must be backed by recorded evidence, not just a status label.
-
-## Flutter integration boundary
-
-The provisional app-facing feature baseline includes:
-
-1. Connect to the BT SHARE hub and view hub readiness.
-2. Scan and list discovered Bluetooth receivers.
-3. For the **current prototype**, assign receivers to Device 1 and Device 2 slots; reject a third active selection/link. This software limit reflects the first build only, not the long-term vision.
-4. Pair, connect, disconnect and request reconnection.
-5. Display per-device pairing, connection, streaming and error states.
-6. Optionally expose diagnostics for development.
-
-The **final Flutter function catalogue and interface contract are not yet frozen** in the supplied BRD. Do not treat draft UUIDs, message formats or UI behaviors as approved until the teams sign off on the versioned contract.
-
-### State and event principles
-
-- **ESP32 is the source of truth** for discovered, selected, paired, connected and streaming state.
-- Pairing and active connection are **different states**.
-- Commands need validation, timeouts and structured errors.
-- Important transitions and failures need traceable logs.
-- An error or disconnect must lead to a known state rather than a silently frozen interface.
-
-## Suggested repository organization
-
-The following layout is a **proposal for organizing the second brain**, not a claim that these folders or files already exist:
-
-```text
-bt-share-second-brain/
-├── README.md
-├── docs/
-│   ├── 00-source-documents/       # Approved BRD, execution plan, procurement documents
-│   ├── 01-requirements/           # Requirement IDs, scope, acceptance matrix
-│   ├── 02-architecture/           # Control/audio separation, interfaces, diagrams
-│   ├── 03-bm83-reference/         # Verified datasheets, firmware capability notes, command matrix
-│   ├── 04-hardware/               # Carrier interface, BOM, assembly guidance
-│   ├── 05-firmware/               # ESP32 modules, state machine, UART/BM83 protocol
-│   ├── 06-ble-flutter-contract/    # Versioned GATT API and team handover
-│   ├── 07-tests/                  # Test protocols, logs, evidence, acceptance results
-│   ├── 08-decisions/              # Engineering decisions, assumptions, change records
-│   └── 09-progress/               # Milestones, blockers, open issues, meeting notes
-├── hardware/
-│   └── kicad/                     # KiCad source projects and manufacturing artifacts
-├── firmware/
-│   └── esp32/                     # ESP32 source code and tests
-└── templates/                     # Reusable issue, experiment and test-record templates
-```
-
-Add only the directories you actually need, and preserve clear revision labels for controlled engineering material.
-
-## How to use this second brain
-
-1. **Start with the approved baseline.** Read the BRD and execution plan before interpreting supporting documents.
-2. **Separate facts from hypotheses.** Mark unverified BM83 capabilities, assumptions and possible approaches explicitly.
-3. **Track every requirement.** Reference IDs such as `BR-001`, `AUD-004`, `FW-003` and the corresponding tests.
-4. **Record decisions and changes.** Include rationale, evidence, revision, reviewer and approval status; do not silently overwrite approved constraints.
-5. **Keep engineering outputs reproducible.** Version schematic/PCB revisions, firmware, interface contracts and test conditions.
-6. **Use evidence for gate completion.** Link logs, measurements, photos, test sheets and sign-off records.
-7. **Distinguish planned vs completed.** A document describing a test is not proof the test passed.
-
-### Guidance for AI assistants
-
-This repository may be used as project context by AI coding and research assistants. Assistants should:
-
-- Prefer the **latest approved BRD + Master Plan + Final Company Procurement Submission** when they conflict with older drafts.
-- Ask for missing specifications rather than inventing BM83 pins, electrical limits, commands or firmware capabilities.
-- Preserve the **multi-device long-term vision** while keeping the **two-receiver, hardware-first, LKR 40,000** college-prototype baseline unchanged unless a documented change is approved.
-- Do **not** describe two receivers as the final product goal or assume the BM83 design supports three or more connections without verification.
-- Keep the UART/BM83 implementation separate from the Flutter-facing BLE contract.
-- Cite the exact source file, revision and requirement ID when proposing a design or code change.
-- Identify what is **verified**, **proposed**, **untested** or **blocked**.
-
-## Source documents
-
-Initial project materials provided for this repository:
-
-- [Hardware BRD (PDF)](Basic%20Documents/PDF/BT_SHARE_BRD.pdf) / [Markdown](Basic%20Documents/MD/BT_SHARE_BRD.md) — two-receiver hardware prototype baseline dated 06 October 2026.
-- [Hardware Execution Plan (PDF)](Basic%20Documents/PDF/BT_SHARE_Execution_Plan.pdf) / [Markdown](Basic%20Documents/MD/BT_SHARE_Execution_Plan.md) — working baseline dated 06 October 2026.
-
-The supplied documents also reference a **Final Company Procurement Submission** and original architecture material. Those references should be imported and checked separately before they are described as present in this repository.
-
-## Definition of success
-
-**For the current college prototype**, success means the evidence shows that:
-
-- The approved carrier and power interfaces are reviewed and safe for the selected hardware.
-- Stereo AUX input is transmitted to **two** compatible Bluetooth A2DP receivers at the same time.
-- The hardware works independently before the Flutter app is integrated.
-- ESP32 can manage discovery, pairing, two-device connections, disconnection, recovery and authoritative state.
-- Flutter can control and observe the hub over the agreed BLE GATT contract.
-- Limitations, particularly device compatibility and audible latency differences, are honestly documented.
-- Procurement remains within the approved prototype ceiling unless a change is approved.
-
-**This is not the definition of success for the complete long-term vision.** A future multi-receiver implementation will need its own architecture, requirements, budget, milestones, and verification evidence.
+</div>
 
 ---
 
-**BT SHARE** · Multi-device audio-sharing vision · Budget-limited two-receiver college prototype · Evidence-driven engineering
+## Meet BT SHARE
+
+**BT SHARE** is a product initiative founded by **X10 THINK** under its technology brand **ZAEROX**. The vision is to make shared wireless listening more accessible: one audio source, multiple compatible personal listening devices.
+
+The project includes **two distinct hardware tracks** and two software workstreams. The first, educational prototype is a limited two-listener experiment; the broader, affordable commercial product remains in architecture and feasibility research. Neither the documented features nor the branding imply that a physical product is already available for sale.
+
+| Workstream | Purpose | Repository-evidenced status |
+|:--|:--|:--|
+| **College hardware prototype** | USB-5V-powered AUX-input transmitter targeting two ordinary Bluetooth Classic A2DP sinks | Historical BRD/planning documented; latest native build and bench evidence **not present in this repository** |
+| **Commercial product R&D** | Affordable multi-listener sharing; investigate **AUX or Bluetooth input** and independently verify 2, 3, 4+ receivers | Product direction under research; architecture and limits **not validated** |
+| **Flutter Android app** | Control the BT SHARE hub over BLE and provide standalone sound utilities | **14 Flutter planning documents** plus feature scope are present; no executable app source/build results included |
+| **Angular website & admin** | Product information, documentation, secure APK downloads, content and release administration | Planning documents available; no website/backend source, deployment or security-test evidence included |
+
+> **Evidence first:** A proposed feature is not an implemented capability. Hardware gates, build results, cost figures, app releases and user-facing claims require verifiable supporting records. See [PROJECT_STATUS.md](PROJECT_STATUS.md).
+
+## The company, the brand, the product
+
+<div align="center">
+  <img src="assets/branding/zaerox-black.png" alt="ZAEROX — Innovation Beyond Limits" width="430" />
+</div>
+
+| Identity | Role |
+|:--|:--|
+| **X10 THINK** | Founding company behind ZAEROX and BT SHARE |
+| **ZAEROX** | Technology brand · *Innovation Beyond Limits* |
+| **BT SHARE** | Bluetooth audio-sharing product and related software ecosystem |
+
+Brand identity, approved assets and usage guidance: [BRAND_IDENTITY.md](BRAND_IDENTITY.md). This relationship describes the team-provided brand structure; it does not imply trademark registration or third-party certification.
+
+## How the first prototype is intended to work
+
+The college prototype is **AUX-input only** and is being developed as a **USB-5V-powered** hardware proof of concept. The following diagram expresses the planned separation of audio and control; it does **not** claim that simultaneous playback has already been bench-proven.
+
+```mermaid
+flowchart TD
+    AUX["Stereo AUX / line-level input"] --> BM83["BM83SM1-00TA audio engine"]
+    BM83 --> R1["Bluetooth A2DP sink 1"]
+    BM83 --> R2["Bluetooth A2DP sink 2"]
+    APP["Flutter Android companion app"] <-->|"BLE GATT control/status"| ESP["ESP32 DevKit V1"]
+    ESP <-->|"UART host commands/events"| BM83
+```
+
+- **Audio path:** external stereo AUX → BM83-based audio subsystem → intended A2DP receivers. The ability to deliver two active audio streams with the exact firmware/configuration still requires proof.
+- **Control path:** Flutter → BLE GATT → ESP32 → UART → BM83. ESP32 owns the device/connection state exposed to Flutter.
+- **Hardware-first acceptance:** verify electrical safety and BM83 bring-up, then one-receiver audio and simultaneous two-receiver audio **before requiring Flutter**.
+- **Scope correction:** the later engineering direction for this specific prototype is **fixed USB 5 V, no battery/charger/UPS**; original 2026-10-06 documents are retained as historical baseline material. The actual current schematic and procurement evidence must be separately reconciled.
+
+The **commercial product** is a separate R&D track. It aims to investigate accepting either a normal AUX signal **or** a compatible phone/computer Bluetooth audio source, then sharing audio with multiple ordinary earbuds/headphones across brands. Neither the Bluetooth-input path nor more-than-two listening devices is asserted as demonstrated.
+
+## Mobile app — Android first
+
+Planned in **Flutter + Dart** with two clear user experiences:
+
+1. **Hub control:** discover and manage receiver connections through a versioned BLE interface with the ESP32; report actual device state and errors.
+2. **Standalone sound workspace:** useful audio utilities even if the user does not own BT SHARE hardware. Planning covers equalizers, audio routing/mixing, volume controls, measurement tools, tuners/metronomes, ambient/focus sounds and hearing-related tools, subject to Android limitations and safety review.
+
+The app planning catalogue also tracks additional concepts, recovery workflows and future tools. Their inclusion in planning is **not** a guarantee of availability, Android OS permission access or a first-release commitment.
+
+**Architecture note:** [Flutter TRD](BT_SHARE_Flutter_Documentation/03_TRD_Technical_Requirements.md), [SDD](BT_SHARE_Flutter_Documentation/04_SDD_Software_Design.md) and [ADR-005](BT_SHARE_Flutter_Documentation/11_ADR_Architecture_Decision_Records.md) explicitly **propose feature-first Clean Architecture, MVVM-style presentation and Riverpod**. **DDD principles** are a compatible additional recommendation in the [architecture proposal](FeaturE_Scope_Documentations/mobile-app/ARCHITECTURE_PROPOSAL.md), not an existing approved decision. Formal architecture sign-off remains pending.
+
+## Website and APK releases
+
+The website workstream plans an **Angular** public experience with a product catalogue, documentation portal, verified APK release centre, and a separately authenticated admin area. The backend/hosting/storage providers are **not yet selected**. Production releases must have authenticated approvals, integrity checks, signing provenance and server-side authorization; no published APK is evidenced in the current repository.
+
+[Website requirements](BT_SHARE_Website_Documentation/WEBSITE_REQUIREMENTS.md) · [Website architecture](BT_SHARE_Website_Documentation/WEBSITE_ARCHITECTURE.md) · [Feature catalogue](BT_SHARE_Website_Documentation/WEBSITE_FEATURE_CATALOGUE.md) · [Branding and content guidance](BT_SHARE_Website_Documentation/WEBSITE_BRANDING.md)
+
+## Current development snapshot
+
+| Item | Status |
+|:--|:--|
+| Original hardware BRD and execution plan | **Documented** (October 6 baseline) |
+| Mobile feature scope and feasibility questions | **Documented** (October 14–15 scope) |
+| Website and secure-admin requirements | **Documented** (October 27 drafts) |
+| X10 THINK → ZAEROX → BT SHARE brand identity and artwork | **Provided by project owner** (October 29) |
+| Native hardware design and electrical/audio acceptance gates | **Not verified from this repository** |
+| Flutter and Angular executable source/build tests | **Not present in this supplied clone** |
+| Feature-first Clean Architecture / MVVM / Riverpod | **Proposed in Flutter TRD/SDD/ADR-005; approval pending** |
+| Public product availability and official APK release | **Not evidenced** |
+
+See the maintained [project status and evidence register](PROJECT_STATUS.md). The original prototype budget ceiling of **LKR 40,000** is a historical project constraint, **not** a statement of current remaining funds or a purchase authorization.
+
+## Documentation map
+
+| Document | Why it matters |
+|:--|:--|
+| [Project status](PROJECT_STATUS.md) | Audited baseline, current unknowns and evidence gates |
+| [Project workflow](PROJECT_WORKFLOW.md) | Roles, approvals, branch hygiene and verification rules |
+| [Requirements index](REQUIREMENTS.md) | Tracks hardware, software and web scope separately |
+| [Decision register](DECISIONS.md) | Approved choices vs. new proposals |
+| [Brand identity](BRAND_IDENTITY.md) | Company/brand/product hierarchy and supplied assets |
+| [Original hardware BRD](First_Documents/MD/BT_SHARE_BRD.md) / [PDF](First_Documents/PDF/BT_SHARE_BRD.pdf) | Historical educational prototype baseline |
+| [Original execution plan](First_Documents/MD/BT_SHARE_Execution_Plan.md) / [PDF](First_Documents/PDF/BT_SHARE_Execution_Plan.pdf) | Original G0–G8 execution stages |
+| [Flutter engineering docs](BT_SHARE_Flutter_Documentation/03_TRD_Technical_Requirements.md) / [Software design](BT_SHARE_Flutter_Documentation/04_SDD_Software_Design.md) / [ADRs](BT_SHARE_Flutter_Documentation/11_ADR_Architecture_Decision_Records.md) | Fourteen committed app specification files; technical approach proposed, not approved |
+| [Mobile product scope](FeaturE_Scope_Documentations/mobile-app/PRODUCT_SCOPE.md) | Android first, hub-control and standalone sound tools |
+| [Mobile feature catalogue](FeaturE_Scope_Documentations/mobile-app/FEATURE_CATALOGUE.md) | Planned app features and dependencies |
+| [Mobile feasibility register](FeaturE_Scope_Documentations/mobile-app/FEASIBILITY_REGISTER.md) | What must be validated on real devices |
+| [25-feature planning register](FeaturE_Scope_Documentations/mobile-app/FEATURE_EXPANSION_25.md) / [17-proposal register](FeaturE_Scope_Documentations/mobile-app/FEATURE_EXPANSION_17.md) | Expanded backlog, including future concepts |
+| [Website requirements](BT_SHARE_Website_Documentation/WEBSITE_REQUIREMENTS.md) / [sitemap](BT_SHARE_Website_Documentation/WEBSITE_SITEMAP.md) | Public website, documentation, downloads and admin |
+
+### Repository documentation integrity
+
+The supplied **local clone at `bc5f287`** includes all fourteen files under [`BT_SHARE_Flutter_Documentation/`](BT_SHARE_Flutter_Documentation/03_TRD_Technical_Requirements.md) as **ordinary tracked files**, resolving the older gitlink issue seen in a previous commit. The documentation references previously pointing at renamed folders have been corrected in this prepared checkout. Run `python scripts/repair_repository_links.py --check` to recheck before publishing. Native Flutter application source, KiCad design files and tested releases are **not** part of this supplied clone.
+
+## Contributing and engineering discipline
+
+The project is developed in separate hardware/embedded, mobile, website and product workstreams. Keep PRs focused, cite requirements and evidence, review cross-team interface changes and never publish secrets, private signing keys or unauthorized manufacturer material.
+
+**Especially important:** work already completed outside GitHub may exist, but it must be linked with an identifiable revision and evidence before the repository can mark it complete. Never make purchases, fabricate boards or claim successful playback based only on README wording.
+
+---
+
+<div align="center">
+
+<img src="assets/branding/zaerox-black.png" alt="ZAEROX — Innovation Beyond Limits" width="270" />
+
+**Created by X10 THINK · A ZAEROX product · BT SHARE**
+
+*Innovation Beyond Limits*
+
+</div>
