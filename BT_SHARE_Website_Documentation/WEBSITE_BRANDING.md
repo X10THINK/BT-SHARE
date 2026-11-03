@@ -1,6 +1,6 @@
 # Website Branding and Product Claims — ZAEROX / BT SHARE
 
-**Date:** 2026-10-29
+**Date:** 2026-11-02
 **Status:** Brand details supplied by owner; site UI, copy, legal claims and deployment still require implementation/review.
 
 ## Identity
@@ -21,6 +21,8 @@
 6. **Footer:** identify X10 THINK as the founding company, ZAEROX as the brand, BT SHARE as the product. Do not assert legal corporate status beyond owner-provided information.
 
 ## Approved imagery available in repository
+
+The four BT SHARE image variants below were refreshed from the product owner's official artwork on **2026-11-02**. Their paths remain unchanged. ZAEROX artwork is unchanged.
 
 - `assets/branding/bt-share-logo-blue.png` — blue product logo/wordmark.
 - `assets/branding/bt-share-icon-blue.png` — blue product icon.
