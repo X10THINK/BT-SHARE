@@ -1,6 +1,6 @@
 # X10 THINK · ZAEROX · BT SHARE — Brand Identity
 
-**Updated:** 2026-10-29
+**Updated:** 2026-11-02
 **Source:** Names, relationship and logo assets supplied directly by the project owner.
 **Purpose:** Document identity for README, product website, documents and future release material.
 
@@ -18,7 +18,7 @@ Suggested product credit: **BT SHARE — A ZAEROX Product, Founded by X10 THINK*
 
 ## Logo assets
 
-All following original logo variations were supplied by the project owner on 2026-10-29 and stored under `assets/branding/`. Filenames are simplified for Markdown compatibility; no new company logo has been invented.
+The four official BT SHARE logo variants were replaced with project-owner-supplied artwork on **2026-11-02**. The two ZAEROX brand assets are retained from the earlier 2026-10-29 set. All assets are stored under `assets/branding/`, and their existing filenames remain unchanged so README and website references continue to work.
 
 | File | Intended usage |
 | --- | --- |
